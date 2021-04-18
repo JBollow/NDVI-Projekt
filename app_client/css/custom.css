@@ -1,0 +1,258 @@
+/* Search icon by IcoMoon, made with http://icomoon.io/app/ */
+
+@font-face {
+  font-family: "icomoon";
+  src: url("../fonts/icomoon/icomoon.eot");
+  src: url("../fonts/icomoon/icomoon.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/icomoon/icomoon.woff") format("woff"),
+    url("../fonts/icomoon/icomoon.ttf") format("truetype"),
+    url("../fonts/icomoon/icomoon.svg#icomoon") format("svg");
+  font-weight: 100;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #fff;
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 14px;
+  color: #404040;
+  margin: 0;
+  padding: 0px;
+  overflow: hidden;
+  height: 100%;
+}
+
+h1 {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
+  font-size: 60px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 800;
+  line-height: 72px;
+  color: #404040;
+  float: left;
+}
+
+h2 {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 20px;
+  color: #404040;
+}
+
+h3 {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 15.4px;
+  color: #404040;
+}
+
+p {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 15.4px;
+  color: #404040;
+}
+
+.container-fluid {
+  z-index: 50;
+  background-color: rgba(224, 224, 224, 0.8);
+}
+
+#mainContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  z-index: 500;
+  padding: 20px 20px 20px 20px;
+}
+
+#image {
+  display: block;
+  max-width: 100%;
+  max-height: 90vh;
+}
+
+.menubox {
+  float: left;
+}
+
+.buttonwhite {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 20px;
+  height: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 0px;
+}
+
+.buttonwhite:hover {
+  background-color: #0098d4;
+  color: white;
+}
+
+.buttonwhite:active {
+  background-color: #0098d4;
+  transform: translateY(2px);
+}
+
+.buttonwhitedis {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 20px;
+  height: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #f3f3f3;
+  color: rgb(0, 0, 0);
+  border: none;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 0px;
+  text-decoration: line-through;
+}
+
+.buttonwhitedis:hover {
+  background-color: #d40075;
+  color: white;
+}
+
+.buttonwhitedis:active {
+  background-color: #d40075;
+  transform: translateY(2px);
+}
+
+.swalCc {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  border: 1px solid black !important;
+  border-radius: 0px !important;
+}
+
+.swal2-confirm {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 100 !important;
+  line-height: 20px !important;
+  height: 40px !important;
+  width: 140px !important;
+  margin-top: 20px !important;
+  margin-bottom: 0px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  color: #fff !important;
+  border: none !important;
+  cursor: pointer !important;
+  border: 1px solid black !important;
+  border-radius: 0px !important;
+  background-color: #008dc5 !important;
+}
+
+.swal2-confirm:hover {
+  background-color: #0074a1 !important;
+}
+
+.swal2-cancel {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 100 !important;
+  line-height: 20px !important;
+  height: 40px !important;
+  width: 140px !important;
+  margin-top: 20px !important;
+  margin-bottom: 0px !important;
+  margin-left: 10px !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  color: #fff !important;
+  border: none !important;
+  cursor: pointer !important;
+  border: 1px solid black !important;
+  border-radius: 0px !important;
+  background-color: #008dc5 !important;
+}
+
+.swal2-cancel:hover {
+  background-color: #0074a1 !important;
+}
+
+.swalCc {
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif !important;
+  background-color: rgba(255, 255, 255, 1) !important;
+  border: 1px solid black !important;
+  border-radius: 0px !important;
+}
+
+div.processing {
+  visibility: hidden;
+  position: absolute;
+  bottom: 20px;
+  right: 2px;
+  z-index: 800;
+  width: 178px;
+  height: 64px;
+  padding: 2px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(0, 0, 20, 0.25);
+}
+
+.box {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.loader {
+  border: 11px solid rgba(0, 0, 20, 0.25);
+  border-radius: 50%;
+  border-top: 11px solid #3498db;
+  width: 56px;
+  height: 56px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite;
+}
