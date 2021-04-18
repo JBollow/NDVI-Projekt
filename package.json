@@ -1,0 +1,26 @@
+{
+  "name": "ndvi-projekt",
+  "version": "1.0.0",
+  "description": "Mapi Survey NDVI WebApp\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D3 NDVI WebApp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JBollow/NDVI-Projekt.git"
+  },
+  "author": "Jan-Patrick Bollow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JBollow/NDVI-Projekt/issues"
+  },
+  "homepage": "https://github.com/JBollow/NDVI-Projekt#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
