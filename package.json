@@ -4,7 +4,6 @@
   "description": "Mapi Survey NDVI WebApp",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./bin/www"
   },
   "repository": {
@@ -18,17 +17,15 @@
   },
   "homepage": "https://github.com/JBollow/NDVI-Projekt#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "http-errors": "^1.8.0",
-    "jade": "^1.11.0",
-    "morgan": "^1.10.0",
+    "http": "0.0.1-security",
     "nodemon": "^2.0.7",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "pug": "^3.0.2",
+    "xml2js": "^0.4.23"
   },
-  "devDependencies": {
-    "jest": "^26.6.3"
-  }
+  "devDependencies": {}
 }
