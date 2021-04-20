@@ -9,8 +9,6 @@ function capture() {
 
   $(".processing").css("visibility", "visible");
 
-  // http://192.168.1.254/?custom=1&cmd=1001
-
   $.ajax({
     url: "http://localhost:5000/capture",
     type: "GET",
@@ -18,8 +16,6 @@ function capture() {
     data: null,
     success: function (res) {
       var pic_name = res.getElementsByTagName("NAME")[0].firstChild.nodeValue;
-      console.log("Response");
-      console.log(res);
       $("#image")
         .attr("src", "http://192.168.1.254/DCIM/PHOTO/" + pic_name)
         .load(function () {
