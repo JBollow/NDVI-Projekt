@@ -28,7 +28,8 @@ function capture() {
         customClass: "swalCc",
         buttonsStyling: false,
       });
-      $(".processing").css("visibility", "hidden");      
+      $(".processing").css("visibility", "hidden");  
+      reload();    
     },
     error: function () {      
       swal({
@@ -41,4 +42,9 @@ function capture() {
     },
     timeout: 0,
   });
+}
+
+function reload(){
+  var url = $("#image").attr("src");
+  $("#image").attr("src", url + `?v=${new Date().getTime()}`);
 }
