@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 import os
 
-localPath = os.path.abspath(os.path.join(os.path.dirname( __file__ )))
+localPath = os.path.abspath(os.path.dirname( __file__ ))
 ndviPath = localPath + "/app_client/NDVI_Temp/"
 ndviArchiv = localPath + "/app_client/NDVI_Archiv/"
 cirPath = localPath + "/app_client/CIR_Temp/"

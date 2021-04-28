@@ -21,14 +21,12 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "fs": "0.0.1-security",
     "http": "0.0.1-security",
     "jimp": "^0.16.1",
     "nodemon": "^2.0.7",
     "path": "^0.12.7",
     "pug": "^3.0.2",
-    "serve-favicon": "^2.5.0",
-    "xml2js": "^0.4.23"
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {},
   "keywords": []

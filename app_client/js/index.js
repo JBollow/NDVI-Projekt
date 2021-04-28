@@ -2,8 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
 const parseString = require("xml2js").parseString;
-// const path = require("path");
-// const fs = require("fs");
 const Jimp = require("jimp");
 
 const router = express.Router();
