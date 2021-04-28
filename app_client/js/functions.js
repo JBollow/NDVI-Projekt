@@ -10,14 +10,14 @@ function capture() {
   $(".processing").css("visibility", "visible");
 
   $.ajax({
-    url: "http://localhost:5000/capture",
+    url: "http://127.0.0.1:5000/capture",
     type: "GET",
     dataType: "xml",
     data: null,
     success: function (res) {
       var pic_name = res.getElementsByTagName("NAME")[0].firstChild.nodeValue;
       $("#image")
-        .attr("src", "http://192.168.1.254/DCIM/PHOTO/" + pic_name)
+        .attr("src", "NDVI_Temp/" + pic_name)
         .load(function () {
           this.width;
         });

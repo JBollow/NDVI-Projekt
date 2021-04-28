@@ -6,7 +6,6 @@ const parseString = require("xml2js").parseString;
 // const fs = require("fs");
 const Jimp = require("jimp");
 
-
 const router = express.Router();
 
 router.use(cors());
@@ -17,27 +16,35 @@ router.get("/capture", function (req, res) {
   axios
     .get("http://192.168.1.254/?custom=1&cmd=1001")
     .then((result) => {
-      res.send(result.data);
-
       parseString(result.data, function (err, result1) {
         var pic_name = result1.Function.File[0].NAME[0];
         var pic_path = "http://192.168.1.254/DCIM/PHOTO/" + pic_name;
-        console.dir(pic_path);
+        var postjson = { filename: pic_name };
 
-        console.log("Jimp");
+        console.log("jimp");
         Jimp.read(pic_path, (err, img) => {
           if (err) throw err;
-          img
-            .normalize(function (err) {
-              if (err) throw err;
-            })
-            .write("./CIR/" + pic_name);            
+          img.write(
+            "./app_client/CIR_Temp/" + pic_name,
+            console.log("Image written")
+          );
         });
 
+        console.log("Axios POST");
+        axios
+          .post("http://127.0.0.1:8088/ndvi", postjson)
+          .then(function (response) {
+            console.log("Axios POST done");
+            res.send(result.data);
+          })
+          .catch(function (error) {
+            console.log("Axios POST error");
+            res.send(result.data);
+          });
       });
     })
     .catch((error) => {
-      console.log("error");
+      console.log("Axios GET error");
       res.send(error.data);
     });
 });
