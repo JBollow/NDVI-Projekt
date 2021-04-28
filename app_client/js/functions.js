@@ -16,13 +16,14 @@ function capture() {
     data: null,
     success: function (res) {
       var pic_name = res.getElementsByTagName("NAME")[0].firstChild.nodeValue;
+      var swaltext = "Done: " + pic_name;
       $("#image")
-        .attr("src", "NDVI_Temp/" + pic_name)
+        .attr("src", "NDVI_Temp/ndvi.jpg")
         .load(function () {
           this.width;
         });
       swal({
-        text: pic_name,
+        text: swaltext,
         type: "success",
         customClass: "swalCc",
         buttonsStyling: false,

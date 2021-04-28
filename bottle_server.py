@@ -7,6 +7,7 @@ import os
 
 localPath = os.path.abspath(os.path.join(os.path.dirname( __file__ )))
 ndviPath = localPath + "/app_client/NDVI_Temp/"
+ndviArchiv = localPath + "/app_client/NDVI_Archiv/"
 cirPath = localPath + "/app_client/CIR_Temp/"
 kernel = np.ones((5, 5), np.float32)/25
 
@@ -68,7 +69,8 @@ def ndvi():
 
     print("image processed")    
 
-    cv2.imwrite(os.path.join(localPath, ndviPath, filename), ndvi8)
+    cv2.imwrite(os.path.join(localPath, ndviPath, "ndvi.jpg"), ndvi8)
+    cv2.imwrite(os.path.join(localPath, ndviArchiv, filename), ndvi8)
 
     print("image saved")
 
