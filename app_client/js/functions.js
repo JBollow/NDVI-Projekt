@@ -10,7 +10,7 @@ function capture() {
   $(".processing").css("visibility", "visible");
 
   $.ajax({
-    url: "http://localhost:5000/capture",
+    url: "/capture",
     type: "GET",
     dataType: "xml",
     data: null,
@@ -28,10 +28,10 @@ function capture() {
         customClass: "swalCc",
         buttonsStyling: false,
       });
-      $(".processing").css("visibility", "hidden");  
-      reload();    
+      $(".processing").css("visibility", "hidden");
+      reload();
     },
-    error: function () {      
+    error: function () {
       swal({
         text: "Error",
         type: "error",
@@ -44,7 +44,7 @@ function capture() {
   });
 }
 
-function reload(){
+function reload() {
   var url = $("#image").attr("src");
   $("#image").attr("src", url + `?v=${new Date().getTime()}`);
 }

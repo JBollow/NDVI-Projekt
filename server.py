@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 import os
 
-localPath = os.path.abspath(os.path.dirname( __file__ ))
+localPath = os.path.abspath(os.path.dirname(__file__))
 ndviPath = localPath + "/app_client/NDVI_Temp/"
 ndviArchiv = localPath + "/app_client/NDVI_Archiv/"
 cirPath = localPath + "/app_client/CIR_Temp/"
@@ -35,17 +35,17 @@ def ndvi():
     print("NDVI")
     req = request.json
 
-    filename = req['filename']    
+    filename = req['filename']
     cir_file_path = os.path.abspath(os.path.join(localPath, cirPath, filename))
 
     print("filename")
     print(filename)
     print(cir_file_path)
 
-    cv2.waitKey(15000) 
+    cv2.waitKey(15000)
 
     img = cv2.imread(cir_file_path)
-    cv2.waitKey(0) 
+    cv2.waitKey(0)
     print("image read")
 
     if img is None:
@@ -67,7 +67,7 @@ def ndvi():
     ndvi8 = ndvi * 256
     ndvi8 = np.uint8(ndvi8)
 
-    print("image processed")    
+    print("image processed")
 
     cv2.imwrite(os.path.join(localPath, ndviPath, "ndvi.jpg"), ndvi8)
     cv2.imwrite(os.path.join(localPath, ndviArchiv, filename), ndvi8)
@@ -81,4 +81,4 @@ def ndvi():
     return json.dumps(success)
 
 
-run(host='localhost', reloader=True, debug=True, port=8088)
+run(host='0.0.0.0', reloader=True, debug=True, port=8088)

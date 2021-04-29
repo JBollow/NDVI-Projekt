@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const index = require("./app_client/js/index");
-const favicon = require('serve-favicon');
+const favicon = require("serve-favicon");
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
 app.use(cors());
-app.use(favicon(path.join(__dirname, './app_client/img', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, "./app_client/img", "favicon.ico")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "app_client")));
