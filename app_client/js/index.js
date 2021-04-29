@@ -30,7 +30,7 @@ router.get("/capture", function (req, res) {
 
         console.log("Axios POST");
         axios
-          .post("http://127.0.0.1:8088/ndvi", postjson)
+          .post("http://localhost:8088/ndvi", postjson)
           .then(function (response) {
             console.log("Axios POST done");
             res.send(result.data);

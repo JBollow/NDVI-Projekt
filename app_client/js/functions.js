@@ -10,7 +10,7 @@ function capture() {
   $(".processing").css("visibility", "visible");
 
   $.ajax({
-    url: "http://127.0.0.1:5000/capture",
+    url: "http://localhost:5000/capture",
     type: "GET",
     dataType: "xml",
     data: null,
