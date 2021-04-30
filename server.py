@@ -52,8 +52,14 @@ def ndvi():
     img = cv2.filter2D(img, -1, kernel)
     img = cv2.resize(img, (1600, 1200))
 
-    ir = img[:, :, 0].astype(float)
-    r = img[:, :, 2].astype(float)
+    # ir = img[:, :, 0].astype(float)
+    # r = img[:, :, 2].astype(float)
+    # bottom = np.add(ir, r)
+    # bottom[bottom == 0] = 0.01
+    # ndvi = np.subtract(ir, r)/bottom
+
+    ir = img[:, :, 0]
+    r = img[:, :, 2]
     bottom = np.add(ir, r)
     bottom[bottom == 0] = 0.01
     ndvi = np.subtract(ir, r)/bottom
