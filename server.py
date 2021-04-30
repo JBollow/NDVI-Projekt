@@ -40,8 +40,8 @@ def ndvi():
     cirname = req['filename']
     filename = "cir.jpg"
     cir_file_path = os.path.abspath(os.path.join(localPath, cirPath, filename))
-    
-    time.sleep(1)
+
+    time.sleep(3)
     img = cv2.imread(cir_file_path)
 
     if img is None:
