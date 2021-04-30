@@ -42,7 +42,7 @@ def ndvi():
     print(cir_file_path)
 
     img = cv2.imread(cir_file_path)
-    cv2.waitKey(0)
+    # cv2.waitKey(0)
     print("image read")
 
     if img is None:
@@ -66,16 +66,18 @@ def ndvi():
 
     print("image processed")
 
-    cv2.imwrite(os.path.join(localPath, ndviPath, "ndvi.jpg"), ndvi8)
-    cv2.imwrite(os.path.join(localPath, ndviArchiv, filename), ndvi8)
-
-    print("image saved")
-
-    time.sleep(5)
-
-    response.headers['Content-Type'] = 'application/json'
-    response.headers['Cache-Control'] = 'no-cache'
-    return json.dumps(success)
-
+    writeStatus = cv2.imwrite(os.path.join(localPath, ndviPath, "ndvi.jpg"), ndvi8)
+    if writeStatus is True:
+        print("image written")
+        cv2.imwrite(os.path.join(localPath, ndviArchiv, filename), ndvi8)
+        response.headers['Content-Type'] = 'application/json'
+        response.headers['Cache-Control'] = 'no-cache'
+        return json.dumps(success)
+    else:
+        print("problem")
+        cv2.imwrite(os.path.join(localPath, ndviArchiv, filename), ndvi8)
+        response.headers['Content-Type'] = 'application/json'
+        response.headers['Cache-Control'] = 'no-cache'
+        return json.dumps(success) 
 
 run(host='0.0.0.0', reloader=True, debug=True, port=8088)
