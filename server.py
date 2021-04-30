@@ -4,6 +4,7 @@ from json import dumps
 import cv2
 import numpy as np
 import os
+import time
 
 localPath = os.path.abspath(os.path.dirname(__file__))
 ndviPath = localPath + "/app_client/NDVI_Temp/"
@@ -42,7 +43,7 @@ def ndvi():
     print(filename)
     print(cir_file_path)
 
-    cv2.waitKey(15000)
+    time.sleep(15)
 
     img = cv2.imread(cir_file_path)
     cv2.waitKey(0)
@@ -74,7 +75,7 @@ def ndvi():
 
     print("image saved")
 
-    cv2.waitKey(10000)
+    time.sleep(10)
 
     response.headers['Content-Type'] = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
