@@ -21,7 +21,7 @@ router.get("/capture", function (req, res) {
         console.log("Start Jimp");
         Jimp.read(pic_path)
           .then((img) => {
-            return img.write("./app_client/CIR_Temp/cir.jpg");
+            return img.write("./app_client/CIR_Temp/cir.png");
           })
           .then((value) => {
             console.log("Image written");

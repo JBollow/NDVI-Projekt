@@ -1,16 +1,19 @@
 from bottle import route, run, template, request, response, post
 import json
 from json import dumps
-import cv2
-import numpy as np
+import numpy
 import os
 import time
+import pyvips
+from colormaps import RdYlGn_lut
 
 localPath = os.path.abspath(os.path.dirname(__file__))
 ndviPath = localPath + "/app_client/NDVI_Temp/"
 ndviArchiv = localPath + "/app_client/NDVI_Archiv/"
 cirPath = localPath + "/app_client/CIR_Temp/"
-kernel = np.ones((5, 5), np.float32)/25
+kernel = numpy.ones((5, 5), numpy.float32)/25
+
+numpy.set_printoptions(threshold=numpy.inf)
 
 failed = [
     {
@@ -23,6 +26,60 @@ success = [
         "response": "success"
     }
 ]
+
+def result_histogram(result):
+    np_2d = numpy.ndarray(
+        buffer=result.write_to_memory(),
+        dtype=numpy.float32,
+        shape=[result.height, result.width]
+    )
+
+    flat_result = np_2d.flatten()
+
+    histogram = numpy.histogram(flat_result, bins=256)[0]
+    return histogram
+
+
+def math_map_value(value, in_low, in_high, to_low, to_high):
+    return to_low + (value - in_low) * (to_high - to_low) / (in_high - in_low)
+
+
+def find_clipped_min_max(histogram, nmin, nmax):
+    summed = sum(histogram)
+    three_percent = summed * 0.03
+    lower_sum = 0
+    upper_sum = 0
+    last_lower_i = 0
+    last_upper_i = 0
+
+    histogram_len = len(histogram)
+
+    for i in range(histogram_len):
+        if lower_sum < three_percent:
+            lower_sum += histogram[i]
+            last_lower_i = i
+        if upper_sum < three_percent:
+            upper_sum += histogram[histogram_len - 1 - i]
+            last_upper_i = histogram_len - 1 - i
+    return {
+        'nmin': math_map_value(last_lower_i, 0, 255, nmin, nmax),
+        'nmax': math_map_value(last_upper_i, 0, 255, nmin, nmax)
+    }
+
+
+def bandsplit(image, band_order):
+    if band_order == 'GRN':
+        second, first, third, alpha = image.bandsplit()
+    else:
+        first, second, third, alpha = image.bandsplit()
+
+    return [first, second, third, alpha]
+
+
+def ndvi_calc(image, band_order):
+    r, g, nir, alpha = bandsplit(image, band_order)
+    index = (nir - r) / (nir + r)
+    return [alpha, index]
 
 
 @route('/')
@@ -38,42 +95,26 @@ def ndvi():
     response.headers['Content-Type'] = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
     cirname = req['filename']
-    filename = "cir.jpg"
+    filename = "cir.png"
     cir_file_path = os.path.abspath(os.path.join(localPath, cirPath, filename))
 
     time.sleep(3)
     print(cir_file_path)
 
-    img = cv2.imread(cir_file_path)
-    print("image read")
-
-    if img is None:
-        print('Could not open or find the image:')
-        return json.dumps(failed)
-
-    img = cv2.normalize(img, None, alpha=0, beta=1, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
-    img = cv2.filter2D(img, -1, kernel)
-    img = cv2.resize(img, (1600, 1200))
- 
-    ir = img[:, :, 0].astype(float)
-    r = img[:, :, 2].astype(float)
-    bottom = np.add(ir, r)
-    bottom[bottom == 0] = 0.01
-    ndvi = np.subtract(ir, r)/bottom
-
-    # 8Bit
-    ndvi8 = ndvi*255
-    ndvi8 = np.uint8(ndvi8)
+    image = pyvips.Image.new_from_file(cir_file_path)
+    alpha, result = ndvi_calc(image, 'RGN')
+    histogram = result_histogram(result)
+    clip_min_max = find_clipped_min_max(histogram, result.min(), result.max())
+    nmin = clip_min_max['nmin']
+    nmax = clip_min_max['nmax']
+    result = ((result-nmin) / (nmax-nmin)) * 256
+    rdylgn_image = pyvips.Image.new_from_array(RdYlGn_lut).bandfold()
+    rgb = result.maplut(rdylgn_image)    
 
     print("image processed")
-    writeStatus = cv2.imwrite(os.path.join(localPath, ndviPath, "ndvi.jpg"), ndvi8)
-    if writeStatus is True:
-        print("image written")
-        cv2.imwrite(os.path.join(localPath, ndviArchiv, cirname), ndvi8)
-        return json.dumps(success)
-    else:
-        print("problem")
-        cv2.imwrite(os.path.join(localPath, ndviArchiv, cirname), ndvi8)
-        return json.dumps(success) 
+    rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviPath, "ndvi.png"))
+    print("image written")
+    rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviArchiv, cirname))
+    return json.dumps(success)
 
 run(host='0.0.0.0', reloader=True, port=8088)
