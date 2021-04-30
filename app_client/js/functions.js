@@ -8,6 +8,8 @@ function capture() {
   });
 
   $(".processing").css("visibility", "visible");
+  $("#ndvi_button").prop("disabled",true);
+  $("#ndvi_button").removeClass("buttonwhite").addClass("buttonwhitedis");
 
   $.ajax({
     url: "/capture",
@@ -29,6 +31,8 @@ function capture() {
         buttonsStyling: false,
       });
       $(".processing").css("visibility", "hidden");
+      $("ndvi_button").prop("disabled",false);     
+      $("#ndvi_button").removeClass("buttonwhitedis").addClass("buttonwhite"); 
       reload();
     },
     error: function () {
@@ -39,6 +43,8 @@ function capture() {
         buttonsStyling: false,
       });
       $(".processing").css("visibility", "hidden");
+      $("ndvi_button").prop("disabled",false);
+      $("#ndvi_button").removeClass("buttonwhitedis").addClass("buttonwhite"); 
     },
     timeout: 0,
   });

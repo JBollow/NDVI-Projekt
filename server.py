@@ -95,13 +95,16 @@ def ndvi():
     response.headers['Content-Type'] = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
     cirname = req['filename']
-    filename = "cir.png"
+    filename = cirname + ".png"
     cir_file_path = os.path.abspath(os.path.join(localPath, cirPath, filename))
 
     time.sleep(3)
-    print(cir_file_path)
 
     image = pyvips.Image.new_from_file(cir_file_path)
+
+    image = image.resize(1/2)
+    image = image.gaussblur(2)
+
     alpha, result = ndvi_calc(image, 'RGN')
     histogram = result_histogram(result)
     clip_min_max = find_clipped_min_max(histogram, result.min(), result.max())
@@ -115,6 +118,7 @@ def ndvi():
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviPath, "ndvi.jpg"))
     print("image written")
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviArchiv, cirname))
+    os.remove(cir_file_path)
     return json.dumps(success)
 
 run(host='0.0.0.0', reloader=True, port=8088)
