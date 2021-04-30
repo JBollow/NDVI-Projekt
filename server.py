@@ -11,6 +11,8 @@ localPath = os.path.abspath(os.path.dirname(__file__))
 ndviPath = localPath + "/app_client/NDVI_Temp/"
 ndviArchiv = localPath + "/app_client/NDVI_Archiv/"
 cirPath = localPath + "/app_client/CIR_Temp/"
+thumbs = ndviArchiv + "thumbs/"
+previews = ndviArchiv + "previews/"
 kernel = numpy.ones((5, 5), numpy.float32)/25
 
 numpy.set_printoptions(threshold=numpy.inf)
@@ -118,6 +120,8 @@ def ndvi():
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviPath, "ndvi.jpg"))
     print("image written")
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviArchiv, cirname))
+    rgb.thumbnail_image(500).write_to_file(os.path.join(localPath, previews, cirname))
+    rgb.thumbnail_image(100).write_to_file(os.path.join(localPath, thumbs, cirname))
     os.remove(cir_file_path)
     return json.dumps(success)
 

@@ -9,7 +9,53 @@ router.use(cors());
 router.use(express.json());
 router.use(express.urlencoded({ extended: false }));
 
+var capturecounter = 0;
+
+function settime() {
+  let d = new Date();
+  let today = new Date().toISOString().slice(0, 10);
+
+  var time =
+    "http://192.168.1.254/?custom=1&cmd=3006&str=" +
+    d.getHours() +
+    ":" +
+    d.getMinutes() +
+    ":" +
+    d.getSeconds();
+
+  var day = "http://192.168.1.254/?custom=1&cmd=3005&str=" + today;
+
+  axios
+    .get(day)
+    .then(function (response) {})
+    .catch(function (error) {});
+
+  axios
+    .get(time)
+    .then(function (response) {})
+    .catch(function (error) {});
+}
+
+function format() {
+  var format = "http://192.168.1.254/?custom=1&cmd=3010&par=1";
+
+  axios
+    .get(format)
+    .then(function (response) {})
+    .catch(function (error) {});
+}
+
+// format();
+// settime();
+
 router.get("/capture", function (req, res) {
+  capturecounter++;
+
+  if (capturecounter > 100) {
+    format();
+    settime();
+  }
+
   axios
     .get("http://192.168.1.254/?custom=1&cmd=1001")
     .then((result) => {
