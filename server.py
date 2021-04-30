@@ -33,7 +33,7 @@ def meta(x='NA'):
 
 @post('/ndvi')
 def ndvi():
-    # print("NDVI")
+    print("NDVI")
     req = request.json
     response.headers['Content-Type'] = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
@@ -42,6 +42,7 @@ def ndvi():
     cir_file_path = os.path.abspath(os.path.join(localPath, cirPath, filename))
 
     time.sleep(3)
+    print(cir_file_path)
 
     img = cv2.imread(cir_file_path)
     print("image read")
@@ -51,18 +52,11 @@ def ndvi():
         return json.dumps(failed)
 
     img = cv2.normalize(img, None, alpha=0, beta=1, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
-    # img = cv2.normalize(img, img, 0, 255, cv2.NORM_MINMAX)
     img = cv2.filter2D(img, -1, kernel)
     img = cv2.resize(img, (1600, 1200))
-
-    # ir = img[:, :, 0].astype(float)
-    # r = img[:, :, 2].astype(float)
-    # bottom = np.add(ir, r)
-    # bottom[bottom == 0] = 0.01
-    # ndvi = np.subtract(ir, r)/bottom
-
-    ir = img[:, :, 0]
-    r = img[:, :, 2]
+ 
+    ir = img[:, :, 0].astype(float)
+    r = img[:, :, 2].astype(float)
     bottom = np.add(ir, r)
     bottom[bottom == 0] = 0.01
     ndvi = np.subtract(ir, r)/bottom
