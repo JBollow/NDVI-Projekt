@@ -39,11 +39,7 @@ def ndvi():
     filename = req['filename']
     cir_file_path = os.path.abspath(os.path.join(localPath, cirPath, filename))
 
-    print("filename")
-    print(filename)
     print(cir_file_path)
-
-    time.sleep(30)
 
     img = cv2.imread(cir_file_path)
     cv2.waitKey(0)

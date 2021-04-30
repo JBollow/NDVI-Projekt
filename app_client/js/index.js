@@ -18,25 +18,30 @@ router.get("/capture", function (req, res) {
         var pic_name = result1.Function.File[0].NAME[0];
         var pic_path = "http://192.168.1.254/DCIM/PHOTO/" + pic_name;
         var postjson = { filename: pic_name };
-
+        
         console.log("jimp");
-        Jimp.read(pic_path, (err, img) => {
-          if (err) throw err;
-          img.write(
-            "./app_client/CIR_Temp/" + pic_name,
-            console.log("Image written")
-          );
-        });
-
-        console.log("Axios POST");
-        axios
-          .post("http://0.0.0.0:8088/ndvi", postjson)
-          .then(function (response) {
-            console.log("Axios POST done");
-            res.send(result.data);
+        Jimp.read(pic_path)
+          .then((img) => {
+            return img.write(
+              "./app_client/CIR_Temp/" + pic_name,
+              console.log("Image written")
+            );
           })
-          .catch(function (error) {
-            console.log("Axios POST error");
+          .then((value) => {
+            console.log("Axios POST");
+            axios
+              .post("http://0.0.0.0:8088/ndvi", postjson)
+              .then(function (response) {
+                console.log("Axios POST done");
+                res.send(result.data);
+              })
+              .catch(function (error) {
+                console.log("Axios POST error");
+                res.send(result.data);
+              });
+          })
+          .catch((err) => {
+            console.error(err);
             res.send(result.data);
           });
       });

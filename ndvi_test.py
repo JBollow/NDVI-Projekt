@@ -32,7 +32,7 @@ ndvi8 = np.uint8(ndvi8)
 
 # ndvi8 = cv2.applyColorMap(ndvi8, cv2.COLORMAP_JET)
 
-# cv2.imshow('NDVI', ndvi)
+cv2.imshow('NDVI', ndvi)
 cv2.imshow('NDVI8', ndvi8)
 
 # print(ndvi)
