@@ -38,7 +38,7 @@ def ndvi():
     response.headers['Content-Type'] = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
     cirname = req['filename']
-    filename = "test.JPG"
+    filename = "cir.JPG"
     cir_file_path = os.path.abspath(os.path.join(localPath, cirPath, filename))
 
     time.sleep(3)
