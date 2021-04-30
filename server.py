@@ -43,7 +43,7 @@ def ndvi():
     print(filename)
     print(cir_file_path)
 
-    time.sleep(30)
+    time.sleep(24)
 
     img = cv2.imread(cir_file_path)
     cv2.waitKey(0)
@@ -75,7 +75,7 @@ def ndvi():
 
     print("image saved")
 
-    time.sleep(10)
+    time.sleep(5)
 
     response.headers['Content-Type'] = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
