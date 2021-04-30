@@ -3,7 +3,6 @@ const cors = require("cors");
 const axios = require("axios");
 const parseString = require("xml2js").parseString;
 const Jimp = require("jimp");
-
 const router = express.Router();
 
 router.use(cors());
@@ -18,16 +17,13 @@ router.get("/capture", function (req, res) {
         var pic_name = result1.Function.File[0].NAME[0];
         var pic_path = "http://192.168.1.254/DCIM/PHOTO/" + pic_name;
         var postjson = { filename: pic_name };
-        
-        console.log("jimp");
+
         Jimp.read(pic_path)
           .then((img) => {
-            return img.write(
-              "./app_client/CIR_Temp/" + pic_name,
-              console.log("Image written")
-            );
+            return img.write("./app_client/CIR_Temp/cir.jpg");
           })
           .then((value) => {
+            console.log("Image written");
             console.log("Axios POST");
             axios
               .post("http://0.0.0.0:8088/ndvi", postjson)
