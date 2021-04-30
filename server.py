@@ -61,8 +61,8 @@ def ndvi():
     # bottom[bottom == 0] = 0.01
     # ndvi = np.subtract(ir, r)/bottom
 
-    ir = img[:, :, 0].astype(float)
-    r = img[:, :, 2].astype(float)
+    ir = img[:, :, 0]
+    r = img[:, :, 2]
     bottom = np.add(ir, r)
     bottom[bottom == 0] = 0.01
     ndvi = np.subtract(ir, r)/bottom
