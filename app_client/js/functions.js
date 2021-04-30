@@ -18,7 +18,7 @@ function capture() {
       var pic_name = res.getElementsByTagName("NAME")[0].firstChild.nodeValue;
       var swaltext = "Done: " + pic_name;
       $("#image")
-        .attr("src", "NDVI_Temp/ndvi.png")
+        .attr("src", "NDVI_Temp/ndvi.jpg")
         .load(function () {
           this.width;
         });

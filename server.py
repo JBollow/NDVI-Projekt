@@ -112,7 +112,7 @@ def ndvi():
     rgb = result.maplut(rdylgn_image)    
 
     print("image processed")
-    rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviPath, "ndvi.png"))
+    rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviPath, "ndvi.jpg"))
     print("image written")
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviArchiv, cirname))
     return json.dumps(success)
