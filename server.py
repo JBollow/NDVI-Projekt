@@ -43,7 +43,7 @@ def ndvi():
     print(filename)
     print(cir_file_path)
 
-    time.sleep(24)
+    time.sleep(30)
 
     img = cv2.imread(cir_file_path)
     cv2.waitKey(0)
