@@ -17,7 +17,8 @@ router.get("/capture", function (req, res) {
         var pic_name = result1.Function.File[0].NAME[0];
         var pic_path = "http://192.168.1.254/DCIM/PHOTO/" + pic_name;
         var postjson = { filename: pic_name };
-
+        
+        console.log("Start Jimp");
         Jimp.read(pic_path)
           .then((img) => {
             return img.write("./app_client/CIR_Temp/cir.jpg");
