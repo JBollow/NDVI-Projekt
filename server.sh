@@ -1,2 +1,2 @@
 #!/bin/bash
-sleep 30s && cd /home/pi/NDVI-Projekt && python3 server.py
+sleep 10s && cd /home/pi/NDVI-Projekt && python3 server.py

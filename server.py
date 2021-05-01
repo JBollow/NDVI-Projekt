@@ -122,7 +122,10 @@ def ndvi():
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviArchiv, cirname))
     rgb.thumbnail_image(500).write_to_file(os.path.join(localPath, previews, cirname))
     rgb.thumbnail_image(100).write_to_file(os.path.join(localPath, thumbs, cirname))
-    os.remove(cir_file_path)
+
+    dir = os.path.join(localPath, cirPath)
+    for f in os.listdir(dir):
+        os.remove(os.path.join(dir, f))
     return json.dumps(success)
 
 run(host='0.0.0.0', reloader=True, port=8088)
