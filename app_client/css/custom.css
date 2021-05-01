@@ -160,6 +160,7 @@ p {
   border: 1px solid black;
   border-radius: 0px;
   text-decoration: line-through;
+  width:100px !important
 }
 
 .buttonwhitedis:hover {
