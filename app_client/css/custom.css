@@ -15,15 +15,14 @@ html {
 }
 
 body {
-  background-color: #fff;
+  background-color: rgb(5, 50, 0);
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
     "Lucida Sans", Tahoma, sans-serif;
-  font-size: 10px;
+  font-size: 10px;<
   font-style: normal;
   font-variant: normal;
   font-weight: 400;
   line-height: 14px;
-  color: #404040;
   margin: 0;
   padding: 0px;
   overflow: hidden;
@@ -33,13 +32,12 @@ body {
 h1 {
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
     "Lucida Sans", Tahoma, sans-serif;
-  font-size: 60px;
+  font-size: 30px;
   font-style: normal;
   font-variant: normal;
   font-weight: 800;
-  line-height: 72px;
-  color: #404040;
-  float: left;
+  line-height: 32px;
+  color: #ffffff;
 }
 
 h2 {
@@ -80,21 +78,32 @@ p {
 
 #mainContainer {
   position: absolute;
+  background-color: rgba(255, 255, 255, 0.6);
   top: 0;
   right: 0;
   width: 100%;
   z-index: 500;
   padding: 20px 20px 20px 20px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border: 1px solid rgb(0, 0, 0);
 }
 
 #image {
   display: block;
   max-width: 100%;
   max-height: 90vh;
+  border: 1px solid rgb(0, 0, 0);
+  float: left;
+  z-index: 100;
 }
 
 .menubox {
   float: left;
+  padding: 20px 20px 20px 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgb(0, 0, 0);
+  z-index: 200;
 }
 
 .buttonwhite {
@@ -117,15 +126,16 @@ p {
   cursor: pointer;
   border: 1px solid black;
   border-radius: 0px;
+  width:100px !important
 }
 
 .buttonwhite:hover {
-  background-color: #0098d4;
+  background-color: #45ac00;
   color: white;
 }
 
 .buttonwhite:active {
-  background-color: #0098d4;
+  background-color: #45ac00;
   transform: translateY(2px);
 }
 
@@ -153,12 +163,12 @@ p {
 }
 
 .buttonwhitedis:hover {
-  background-color: #d40075;
+  background-color: #d42000;
   color: white;
 }
 
 .buttonwhitedis:active {
-  background-color: #d40075;
+  background-color: #d42000;
   transform: translateY(2px);
 }
 
@@ -188,11 +198,11 @@ p {
   cursor: pointer !important;
   border: 1px solid black !important;
   border-radius: 0px !important;
-  background-color: #008dc5 !important;
+  background-color: #45ac00 !important;
 }
 
 .swal2-confirm:hover {
-  background-color: #0074a1 !important;
+  background-color: #45ac00 !important;
 }
 
 .swal2-cancel {
@@ -214,11 +224,11 @@ p {
   cursor: pointer !important;
   border: 1px solid black !important;
   border-radius: 0px !important;
-  background-color: #008dc5 !important;
+  background-color: #45ac00 !important;
 }
 
 .swal2-cancel:hover {
-  background-color: #0074a1 !important;
+  background-color: #45ac00 !important;
 }
 
 .swalCc {
@@ -232,14 +242,14 @@ p {
 div.processing {
   visibility: hidden;
   position: absolute;
-  bottom: 20px;
-  right: 2px;
+  bottom: 61px;
+  left: 10px;
   z-index: 800;
   width: 178px;
   height: 64px;
   padding: 2px;
   background-color: rgba(255, 255, 255, 0.8);
-  border: 2px solid rgba(0, 0, 20, 0.25);
+  border: 1px solid black;
 }
 
 .box {
@@ -249,16 +259,10 @@ div.processing {
 .loader {
   border: 11px solid rgba(0, 0, 20, 0.25);
   border-radius: 50%;
-  border-top: 11px solid #3498db;
+  border-top: 11px solid #45ac00;
   width: 56px;
   height: 56px;
   -webkit-animation: spin 2s linear infinite;
   /* Safari */
   animation: spin 2s linear infinite;
-}
-
-.galleria{
-  max-width: 100%;
-  height: 700px;
-  margin: 0 auto;
 }
