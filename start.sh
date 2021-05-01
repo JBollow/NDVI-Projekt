@@ -1,7 +1,3 @@
 #!/bin/bash
-cd /home/pi/NDVI-Projekt
-
-npm start &
-echo "Start NPM"
-python3 server.py &
-echo "Start PY" 
+sleep 30s && cd /home/pi/NDVI-Projekt && npm start && python3 server.py &
+exit 0
