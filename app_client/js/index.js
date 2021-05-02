@@ -49,7 +49,7 @@ function format() {
 format();
 settime();
 
-const job = schedule.scheduleJob("* * 12 * * *", function () {
+const job = schedule.scheduleJob("* * 16 * * *", function () {
   capturecounter++;
   if (capturecounter > 100) {
     format();
