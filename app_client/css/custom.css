@@ -71,23 +71,22 @@ p {
 }
 
 #image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   max-width: 100%;
-  max-height: 95vh;
+  max-height: 100vh;
   z-index: 100;
-  float: left;
-  padding-right: 20px;
-  padding-left: 20px;
-  padding-top: 10px;
 }
 
 .menubox {
-  float: left;
-  background-color: rgba(255, 255, 255, 0.418);
-  border: 1px solid rgb(0, 0, 0);
-  z-index: 200;
-  margin-left: 20px;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 47px;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 300;
+  width: 100%;
 }
 
 .buttonwhite {
@@ -106,8 +105,8 @@ p {
   padding-bottom: 0px;
   padding-left: 15px;
   padding-right: 15px;
-  background-color: #ffffff;
-  color: rgb(0, 0, 0);
+  background-color: rgba(255, 255, 255, 0.45);
+  color: rgb(255, 255, 255);
   border: none;
   cursor: pointer;
   border: 1px solid black;
@@ -117,7 +116,7 @@ p {
 
 .buttonwhite:hover {
   background-color: #45ac00;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .buttonwhite:active {
@@ -141,7 +140,7 @@ p {
   padding-bottom: 0px;
   padding-left: 15px;
   padding-right: 15px;
-  background-color: #f3f3f3;
+  background-color: #d42000;
   color: rgb(0, 0, 0);
   border: none;
   cursor: pointer;

@@ -2,13 +2,18 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const index = require("./app_client/js/index");
+// const ftp = require("./app_client/js/ftp");
 const favicon = require("serve-favicon");
 const Gallery = require("express-photo-gallery");
 
 const app = express();
 
-var options = {
+var optionsArchiv = {
   title: "NDVI Archiv",
+};
+
+var optionsNDVI = {
+  title: "NDVI",
 };
 
 var port = 5000;
@@ -29,8 +34,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "app_client")));
 app.use("/", index);
+// app.use("/ftp", ftp);
 
-app.use("/archiv", Gallery("./app_client/NDVI_Archiv", options));
+app.use("/archiv", Gallery("./app_client/NDVI_Archiv", optionsArchiv));
+app.use("/live", Gallery("./app_client/NDVI_Temp", optionsNDVI));
 
 app.use(function (req, res, next) {
   var err = new Error("Not Found");
