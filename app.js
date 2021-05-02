@@ -3,14 +3,13 @@ const cors = require("cors");
 const path = require("path");
 const index = require("./app_client/js/index");
 const favicon = require("serve-favicon");
-const Gallery = require('express-photo-gallery');
+const Gallery = require("express-photo-gallery");
 
 const app = express();
 
 var options = {
-  title: 'NDVI Archiv'
+  title: "NDVI Archiv",
 };
-
 
 var port = 5000;
 app.listen(port, function (err, res) {
@@ -45,7 +44,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-
 
 module.exports = app;

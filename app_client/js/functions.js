@@ -56,5 +56,5 @@ function reload() {
 }
 
 function archiv() {
-  window.location.href = "/archiv";  
+  window.location.href = "/archiv";
 }

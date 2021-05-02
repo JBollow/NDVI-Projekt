@@ -24,6 +24,7 @@
     "express-photo-gallery": "^1.0.9",
     "http": "0.0.1-security",
     "jimp": "^0.16.1",
+    "node-schedule": "^2.0.0",
     "nodemon": "^2.0.7",
     "path": "^0.12.7",
     "pug": "^3.0.2",

@@ -92,7 +92,7 @@ def meta(x='NA'):
 
 @post('/ndvi')
 def ndvi():
-    print("NDVI")
+    # print("NDVI")
     req = request.json
     response.headers['Content-Type'] = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
@@ -116,9 +116,9 @@ def ndvi():
     rdylgn_image = pyvips.Image.new_from_array(RdYlGn_lut).bandfold()
     rgb = result.maplut(rdylgn_image)    
 
-    print("image processed")
+    # print("image processed")
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviPath, "ndvi.jpg"))
-    print("image written")
+    # print("image written")
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviArchiv, cirname))
     rgb.thumbnail_image(500).write_to_file(os.path.join(localPath, previews, cirname))
     rgb.thumbnail_image(100).write_to_file(os.path.join(localPath, thumbs, cirname))
