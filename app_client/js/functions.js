@@ -18,7 +18,7 @@ function capture() {
     data: null,
     success: function (res) {
       var pic_name = res.getElementsByTagName("NAME")[0].firstChild.nodeValue;
-      var swaltext = "Done: " + pic_name;
+      var swaltext = "NDVI saved!";
       $("#image")
         .attr("src", "NDVI_Temp/ndvi.jpg")
         .load(function () {

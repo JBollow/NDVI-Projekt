@@ -268,7 +268,7 @@ body.stop-scrolling {
         bottom: 10px;
         background-color: #F8BB86; }
     .sweet-alert .sa-icon.sa-info {
-      border-color: #C9DAE1; }
+      border-color: #000000; }
       .sweet-alert .sa-icon.sa-info::before {
         content: "";
         position: absolute;

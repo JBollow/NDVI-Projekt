@@ -15,9 +15,6 @@
         integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
         crossorigin="" />
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
-
     <link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
@@ -50,35 +47,30 @@
 
     <script src="js/functions.js"></script>
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css">
+
     <meta charset="utf-8">
     <title>Mapi Survey NDVI WebApp</title>
 </head>
 
 <body>
-
     <div class="container-fluid" id="mainContainer">
-        <div class="col-sm-2">
-            <div class="row">
-                <div class="menubox" style="margin-top: 20px;">
+        <div class="row">
+            <img id="image" class="img-fluid" src="NDVI_Temp/ndvi.jpg" />
+            <div class="box">
+                <div class="menubox">
                     <button id="ndvi_button" class="buttonwhite" type="button" onclick="capture()">NDVI</button>
-                    <br><br><br>
                     <button id="archiv_button" class="buttonwhite" type="button" onclick="archiv()">Archiv</button>
                 </div>
             </div>
         </div>
-
-        <div class="col-sm-10">
-            <div class="row">
-                <img id="image" class="img-fluid" src="NDVI_Temp/ndvi.jpg" />
-            </div>
-        </div>
     </div>
-
     <div class="processing">
         <table>
             <tr>
                 <td>
-                    <h4>Processing...&nbsp;</h4>
+                    <h2>&nbsp;Processing...&nbsp;</h2>
                 </td>
                 <td>
                     <div class="loader"></div>
@@ -86,7 +78,6 @@
             </tr>
         </table>
     </div>
-
 </body>
 
 </html>

@@ -15,18 +15,7 @@ html {
 }
 
 body {
-  background-color: rgb(5, 50, 0);
-  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
-    "Lucida Sans", Tahoma, sans-serif;
-  font-size: 10px;<
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  line-height: 14px;
-  margin: 0;
-  padding: 0px;
-  overflow: hidden;
-  height: 100%;
+  background-color: #000000;
 }
 
 h1 {
@@ -44,9 +33,10 @@ h2 {
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
     "Lucida Sans", Tahoma, sans-serif;
   font-size: 20px;
-  font-weight: 800;
-  line-height: 20px;
-  color: #404040;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 24px;
+  color: #000000;
 }
 
 h3 {
@@ -73,37 +63,31 @@ p {
 
 .container-fluid {
   z-index: 50;
-  background-color: rgba(224, 224, 224, 0.8);
 }
 
 #mainContainer {
-  position: absolute;
-  background-color: rgba(255, 255, 255, 0.6);
-  top: 0;
-  right: 0;
-  width: 100%;
   z-index: 500;
-  padding: 20px 20px 20px 20px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  border: 1px solid rgb(0, 0, 0);
+  width: auto;
 }
 
 #image {
-  display: block;
   max-width: 100%;
-  max-height: 90vh;
-  border: 1px solid rgb(0, 0, 0);
-  float: left;
+  max-height: 95vh;
   z-index: 100;
+  float: left;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 10px;
 }
 
 .menubox {
   float: left;
-  padding: 20px 20px 20px 20px;
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.418);
   border: 1px solid rgb(0, 0, 0);
   z-index: 200;
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .buttonwhite {
@@ -114,8 +98,10 @@ p {
   font-weight: 100;
   line-height: 20px;
   height: 30px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 15px;
@@ -125,8 +111,8 @@ p {
   border: none;
   cursor: pointer;
   border: 1px solid black;
-  border-radius: 0px;
-  width:100px !important
+  border-radius: 4px;
+  width: 100px !important;
 }
 
 .buttonwhite:hover {
@@ -147,8 +133,10 @@ p {
   font-weight: 100;
   line-height: 20px;
   height: 30px;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left: 15px;
@@ -158,9 +146,9 @@ p {
   border: none;
   cursor: pointer;
   border: 1px solid black;
-  border-radius: 0px;
+  border-radius: 4px;
   text-decoration: line-through;
-  width:100px !important
+  width: 100px !important;
 }
 
 .buttonwhitedis:hover {
@@ -177,8 +165,8 @@ p {
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
     "Lucida Sans", Tahoma, sans-serif !important;
   background-color: rgba(255, 255, 255, 1) !important;
-  border: 1px solid black !important;
-  border-radius: 0px !important;
+  border: 1px solid rgb(0, 0, 0) !important;
+  border-color: #000000;
 }
 
 .swal2-confirm {
@@ -197,9 +185,8 @@ p {
   color: #fff !important;
   border: none !important;
   cursor: pointer !important;
-  border: 1px solid black !important;
-  border-radius: 0px !important;
   background-color: #45ac00 !important;
+  border: 1px solid rgb(0, 0, 0) !important;
 }
 
 .swal2-confirm:hover {
@@ -223,9 +210,8 @@ p {
   color: #fff !important;
   border: none !important;
   cursor: pointer !important;
-  border: 1px solid black !important;
-  border-radius: 0px !important;
   background-color: #45ac00 !important;
+  border: 1px solid rgb(0, 0, 0) !important;
 }
 
 .swal2-cancel:hover {
@@ -236,25 +222,24 @@ p {
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
     "Lucida Sans", Tahoma, sans-serif !important;
   background-color: rgba(255, 255, 255, 1) !important;
-  border: 1px solid black !important;
-  border-radius: 0px !important;
+  border: 1px solid rgb(0, 0, 0) !important;
 }
 
 div.processing {
   visibility: hidden;
   position: absolute;
-  bottom: 61px;
-  left: 10px;
+  top: 45%;
+  left: 45%;
   z-index: 800;
-  width: 178px;
+  width: 207px;
   height: 64px;
   padding: 2px;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 1);
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 4px;
 }
-
 .box {
-  background-color: rgba(255, 255, 255, 0.3);
+  position: relative;
 }
 
 .loader {
