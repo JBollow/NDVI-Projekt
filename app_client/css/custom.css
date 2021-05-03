@@ -89,15 +89,21 @@ p {
   width: 100%;
 }
 
+.glyphicon{
+  display: inline;
+  margin-right: 5px;
+}
+
 .buttonwhite {
+  display: inline;
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
     "Lucida Sans", Tahoma, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 100;
   line-height: 20px;
-  height: 30px;
-  margin-top: 10px;
+  height: 32px;
+  margin-top: 7px;
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
@@ -111,7 +117,7 @@ p {
   cursor: pointer;
   border: 1px solid black;
   border-radius: 4px;
-  width: 100px !important;
+  width: 130px !important;
 }
 
 .buttonwhite:hover {
@@ -131,8 +137,8 @@ p {
   font-style: normal;
   font-weight: 100;
   line-height: 20px;
-  height: 30px;
-  margin-top: 10px;
+  height: 32px;
+  margin-top: 7px;
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
@@ -147,7 +153,7 @@ p {
   border: 1px solid black;
   border-radius: 4px;
   text-decoration: line-through;
-  width: 100px !important;
+  width: 130px !important;
 }
 
 .buttonwhitedis:hover {
@@ -237,6 +243,21 @@ div.processing {
   border: 1px solid rgb(0, 0, 0);
   border-radius: 4px;
 }
+
+div.settings {
+  visibility: hidden;
+  position: absolute;
+  top: 66px;
+  right: 20px;
+  z-index: 800;
+  width: 300px;
+  height: 600px;
+  padding: 2px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 4px;
+}
+
 .box {
   position: relative;
 }
@@ -250,4 +271,8 @@ div.processing {
   -webkit-animation: spin 2s linear infinite;
   /* Safari */
   animation: spin 2s linear infinite;
+}
+
+#settings_button{
+  float: right;
 }

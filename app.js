@@ -33,11 +33,11 @@ app.use(favicon(path.join(__dirname, "./app_client/img", "favicon.ico")));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "app_client")));
-app.use("/", index);
-// app.use("/ftp", ftp);
 
+// app.use("/ftp", ftp);
+app.use("/", index);
 app.use("/archiv", Gallery("./app_client/NDVI_Archiv", optionsArchiv));
-app.use("/live", Gallery("./app_client/NDVI_Temp", optionsNDVI));
+app.use("/latest", Gallery("./app_client/NDVI_Temp", optionsNDVI));
 
 app.use(function (req, res, next) {
   var err = new Error("Not Found");

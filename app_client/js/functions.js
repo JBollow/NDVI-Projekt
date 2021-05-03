@@ -58,3 +58,13 @@ function reload() {
 function archiv() {
   window.location.href = "/archiv";
 }
+
+function latest() {
+  window.location.href = "/latest";
+}
+
+function settings() {
+  if ($(".settings").css("visibility") == "hidden")
+    $(".settings").css("visibility", "visible");
+  else $(".settings").css("visibility", "hidden");
+}
