@@ -59,6 +59,10 @@ function archiv() {
   window.location.href = "/archiv";
 }
 
+function ftp() {
+  window.location.href = "/archiv";
+}
+
 function latest() {
   window.location.href = "/latest";
 }
