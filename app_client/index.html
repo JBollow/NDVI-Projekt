@@ -20,7 +20,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    
+
     <script src="js/sweetalert2.all.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/functions.js"></script>
@@ -46,37 +46,45 @@
         <div class="box">
             <img id="image" class="img-fluid" src="NDVI_Temp/ndvi.jpg" />
         </div>
-        <div class="menubox">            
-            <button id="ndvi_button" class="buttonwhite" type="button" onclick="capture()"><span class="glyphicon glyphicon-refresh"></span>NDVI</button>
-            <button id="latest_button" class="buttonwhite" type="button" onclick="latest()"><span class="glyphicon glyphicon-picture"></span>Latest</button>
-            <button id="archiv_button" class="buttonwhite" type="button" onclick="archiv()"><span class="glyphicon glyphicon-th"></span>Archiv</button>
-            <button id="ftp_button" class="buttonwhite" type="button" onclick="ftp()"><span class="glyphicon glyphicon-folder-open"></span>FTP</button>
-            <button id="settings_button" class="buttonwhite" type="button" onclick="settings()"><span class="glyphicon glyphicon-cog"></span>Settings</button>
+        <div class="menubox">
+            <button id="ndvi_button" class="buttonwhite" type="button" onclick="capture()"><span
+                    class="glyphicon glyphicon-refresh"></span>NDVI</button>
+            <button id="latest_button" class="buttonwhite" type="button" onclick="latest()"><span
+                    class="glyphicon glyphicon-picture"></span>Latest</button>
+            <button id="archiv_button" class="buttonwhite" type="button" onclick="archiv()"><span
+                    class="glyphicon glyphicon-th"></span>Archiv</button>
+            <button id="ftp_button" class="buttonwhite" type="button" onclick="ftp()"><span
+                    class="glyphicon glyphicon-folder-open"></span>FTP</button>
+            <button id="settings_button" class="buttonwhite" type="button" onclick="settings()"><span
+                    class="glyphicon glyphicon-cog"></span>Settings</button>
         </div>
     </div>
     <div class="processing">
+
+        <div class="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+    </div>
+    <div class="settings">
         <table>
             <tr>
                 <td>
-                    <h2>&nbsp;Processing...&nbsp;</h2>
-                </td>
-                <td>
-                    <div class="loader"></div>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="settings">
-        <table> 
-            <tr>
-                <td>
                     <form>
+
                         <lable class="formlable" for="inputpath">Auto capture time:</lable>
-                        <input class="pfad" type="time" name="path" id="inputpath" placeholder="C:\Orthophoto.tif">
-                        <input type="submit" value="&#10003;">
+                        <input class="timein" type="time" name="path" id="inputpath" placeholder="C:\Orthophoto.tif">
+                        <div class="intime">
+                            <input class="sub" type="submit" value="&#10003;"></div>
                     </form>
                 </td>
-                
             </tr>
         </table>
     </div>

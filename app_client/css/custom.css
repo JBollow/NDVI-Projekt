@@ -1,15 +1,3 @@
-/* Search icon by IcoMoon, made with http://icomoon.io/app/ */
-
-@font-face {
-  font-family: "icomoon";
-  src: url("../fonts/icomoon/icomoon.eot");
-  src: url("../fonts/icomoon/icomoon.eot?#iefix") format("embedded-opentype"),
-    url("../fonts/icomoon/icomoon.woff") format("woff"),
-    url("../fonts/icomoon/icomoon.ttf") format("truetype"),
-    url("../fonts/icomoon/icomoon.svg#icomoon") format("svg");
-  font-weight: 100;
-}
-
 html {
   -webkit-font-smoothing: antialiased;
 }
@@ -89,11 +77,6 @@ p {
   width: 100%;
 }
 
-.glyphicon{
-  display: inline;
-  margin-right: 5px;
-}
-
 .buttonwhite {
   display: inline;
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
@@ -107,17 +90,14 @@ p {
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-top: 3px;
+  padding-right: 8px;
   background-color: rgba(255, 255, 255, 0.45);
   color: rgb(255, 255, 255);
-  border: none;
   cursor: pointer;
   border: 1px solid black;
   border-radius: 4px;
-  width: 130px !important;
+  width: 100px !important;
 }
 
 .buttonwhite:hover {
@@ -142,18 +122,15 @@ p {
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-top: 3px;
+  padding-right: 8px;
   background-color: #d42000;
   color: rgb(0, 0, 0);
-  border: none;
   cursor: pointer;
   border: 1px solid black;
   border-radius: 4px;
   text-decoration: line-through;
-  width: 130px !important;
+  width: 100px !important;
 }
 
 .buttonwhitedis:hover {
@@ -170,8 +147,9 @@ p {
   font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
     "Lucida Sans", Tahoma, sans-serif !important;
   background-color: rgba(255, 255, 255, 1) !important;
-  border: 1px solid rgb(0, 0, 0) !important;
   border-color: #000000;
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
 .swal2-confirm {
@@ -188,10 +166,10 @@ p {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
   color: #fff !important;
-  border: none !important;
   cursor: pointer !important;
   background-color: #45ac00 !important;
-  border: 1px solid rgb(0, 0, 0) !important;
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
 .swal2-confirm:hover {
@@ -213,21 +191,14 @@ p {
   padding-top: 0px !important;
   padding-bottom: 0px !important;
   color: #fff !important;
-  border: none !important;
   cursor: pointer !important;
   background-color: #45ac00 !important;
-  border: 1px solid rgb(0, 0, 0) !important;
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
 .swal2-cancel:hover {
   background-color: #45ac00 !important;
-}
-
-.swalCc {
-  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
-    "Lucida Sans", Tahoma, sans-serif !important;
-  background-color: rgba(255, 255, 255, 1) !important;
-  border: 1px solid rgb(0, 0, 0) !important;
 }
 
 div.processing {
@@ -236,11 +207,11 @@ div.processing {
   top: 45%;
   left: 45%;
   z-index: 800;
-  width: 207px;
-  height: 64px;
+  width: 84px;
+  height: 84px;
   padding: 2px;
   background-color: rgba(255, 255, 255, 1);
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid black;
   border-radius: 4px;
 }
 
@@ -251,42 +222,144 @@ div.settings {
   right: 20px;
   z-index: 800;
   width: 280px;
-  height: 200px; 
+  height: 49px;
   background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgb(0, 0, 0);
-  border-radius: 4px;
   padding-left: 10px;
   padding-top: 10px;
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
 .box {
   position: relative;
 }
 
-.loader {
-  border: 11px solid rgba(0, 0, 20, 0.25);
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  border-top: 11px solid #45ac00;
-  width: 56px;
-  height: 56px;
-  -webkit-animation: spin 2s linear infinite;
-  /* Safari */
-  animation: spin 2s linear infinite;
+  background: #45ac00;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
-#settings_button{
-  float: right;  
+#settings_button {
+  float: right;
 }
 
+.glyphicon{
+  display: inline;
+  margin-right: 6px;
+}
 
-.pfad:hover {
+.timein {
+  display: inline;
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
+  font-size: 14px;
+  font-style: bold;
+  line-height: 18px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 4px;
+  height: 26px;
+  width: 70px !important;
+}
+
+.timein:hover {
   background-color: #45ac00;
   color: white;
 }
 
+.timein:active {
+  background-color: #45ac00;
+  color: white;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
 .formlable {
   padding-right: 15px;
-  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
   font-size: 16px;
   font-style: normal;
   font-variant: normal;
@@ -294,4 +367,40 @@ div.settings {
   line-height: 26px;
   color: #202020;
   position: relative;
+}
+
+.sub {
+  display: inline;
+  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
+    "Lucida Sans", Tahoma, sans-serif;
+  font-size: 18px;
+  font-style: bold;
+  line-height: 22px;
+  height: 26px;
+  width: 26px !important;
+  background-color: rgba(255, 255, 255, 0.45);
+  color: #45ac00;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+
+.sub:hover {
+  background-color: #45ac00;
+  color: rgb(0, 0, 0);
+}
+
+.sub:active {
+  background-color: #45ac00;
+  transform: translateY(2px);
+}
+
+.fieldwrapper {
+  white-space: nowrap;
+}
+
+.intime {
+  position: relative;
+  top: 1px;
+  display: inline;
 }
