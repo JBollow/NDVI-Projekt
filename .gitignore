@@ -1,5 +1,4 @@
 node_modules
 Sonstiges
-NDVI_Archiv
-NDVI_Temp
-CIR_Temp
+**/*.jpg
+!/app/img/*.jpg
