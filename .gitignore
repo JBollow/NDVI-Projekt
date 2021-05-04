@@ -1,5 +1,3 @@
 node_modules
 Sonstiges
 **/*.jpg
-!/app/img/*.jpg
-!/app/NDVI_Temp/*.jpg
