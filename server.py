@@ -80,7 +80,7 @@ def bandsplit(image, band_order):
 
 
 def ndvi_calc(image, band_order):
-    r, g, nir, alpha = bandsplit(image, band_order)
+    nir, g, r, alpha = bandsplit(image, band_order)
     index = (nir - r) / (nir + r)
     return [alpha, index]
 
@@ -118,7 +118,7 @@ def ndvi():
     nmax = clip_min_max['nmax']
     result = ((result-nmin) / (nmax-nmin)) * 256
     rdylgn_image = pyvips.Image.new_from_array(RdYlGn_lut).bandfold()
-    rgb = result.maplut(rdylgn_image)    
+    rgb = result.maplut(rdylgn_image)        
 
     # print("image processed")
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviPath, "ndvi.jpg"))
