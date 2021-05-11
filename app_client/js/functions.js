@@ -1,5 +1,3 @@
-const checkDiskSpace = require('check-disk-space')
-
 function capture() {
   swal({
     // position: "bottom-end",
@@ -36,6 +34,7 @@ function capture() {
       $("#ndvi_button").prop("disabled", false);
       $("#ndvi_button").removeClass("buttonwhitedis").addClass("buttonwhite");
       reload();
+      diskspace();
     },
     error: function () {
       swal({
@@ -49,7 +48,7 @@ function capture() {
       $("#ndvi_button").removeClass("buttonwhitedis").addClass("buttonwhite");
     },
     timeout: 0,
-  });
+  });  
 }
 
 function reload() {
@@ -75,23 +74,66 @@ function settings() {
   else $(".settings").css("visibility", "hidden");
 }
 
-function reportDiskSpace() {
-  var platform = window.navigator.platform,
-    windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+function setTimer() {
+  var time = {
+    time: $("#inputpath").val(),
+  };
 
-  if (windowsPlatforms.indexOf(platform) !== -1) {
-    checkDiskSpace('C:/').then((diskSpace) => {})
-    return diskSpace;
-    os = 'Windows';
-  } else if (/Linux/.test(platform)) {
-    checkDiskSpace('/').then((diskSpace) => {})
-    return diskSpace;
-    os = 'Linux';
-  }
-  return null;
+  $.ajax({
+    url: "/settimer",
+    type: "POST",
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify(time),
+    traditional: true,
+    cache: false,
+    processData: false,
+    success: function () {
+      swal({
+        text: "Timer changed",
+        type: "success",
+        customClass: "swalCc",
+        buttonsStyling: false,
+      });
+    },
+    error: function () {
+      swal({
+        text: "Error",
+        type: "error",
+        customClass: "swalCc",
+        buttonsStyling: false,
+      });
+    },
+    timeout: 0,
+  });
 }
 
-
-function setTimer(){
+function getTimer() {
+  $.ajax({
+    url: "/gettimer",
+    type: "GET",
+    dataType: "JSON",
+    data: null,
+    success: function (res) {
+      $("#inputpath").val( res.hour+":"+res.min+":00" );
+    },
+    error: function () { console.log("error")},
+    timeout: 0,
+  });
   
+  settings();
+}
+
+function diskspace() {
+  $.ajax({
+    url: "/diskspace",
+    type: "GET",
+    dataType: "JSON",
+    data: null,
+    success: function (res) {
+      $("#diskspacetext").text(res.space + "%");
+    },
+    error: function () {},
+    timeout: 0,
+  });
 }

@@ -5,35 +5,47 @@ const parseString = require("xml2js").parseString;
 const Jimp = require("jimp");
 const schedule = require("node-schedule");
 const router = express.Router();
+const os = require("os");
+const checkDiskSpace = require("check-disk-space");
+const fs = require("fs");
 
 router.use(cors());
 router.use(express.json());
-router.use(express.urlencoded({
-  extended: false
-}));
+router.use(
+  express.urlencoded({
+    extended: false,
+  })
+);
 
-var capturecounter = 0;
-var timer = "0 16 * * *";
+let rawdata = fs.readFileSync("./settings.json");
+let savedata = JSON.parse(rawdata);
+console.log(savedata);
+
+var capturecounter = savedata.capturecounter;
+var hour = savedata.hour;
+var min = savedata.min;
+var mapirIP = savedata.mapirIP;
+var timer = min + " " + hour + " * * *";
 
 function settime() {
   let d = new Date();
   let today = new Date().toISOString().slice(0, 10);
 
   var time =
-    "http://192.168.1.254/?custom=1&cmd=3006&str=" +
+    "http://" +
+    mapirIP +
+    "/?custom=1&cmd=3006&str=" +
     d.getHours() +
     ":" +
     d.getMinutes() +
     ":" +
     d.getSeconds();
 
-  var day = "http://192.168.1.254/?custom=1&cmd=3005&str=" + today;
-
+  var day = "http://" + mapirIP + "/?custom=1&cmd=3005&str=" + today;
   axios
     .get(day)
     .then(function (response) {})
     .catch(function (error) {});
-
   axios
     .get(time)
     .then(function (response) {})
@@ -41,16 +53,42 @@ function settime() {
 }
 
 function format() {
-  var format = "http://192.168.1.254/?custom=1&cmd=3010&par=1";
-
+  var format = "http://" + mapirIP + "/?custom=1&cmd=3010&par=1";
   axios
     .get(format)
     .then(function (response) {})
     .catch(function (error) {});
 }
 
-format();
-settime();
+if (capturecounter > 1000) {
+  format();
+  settime();
+}
+
+router.get("/diskspace", function (req, res) {
+  space = { space: "0" };
+  if (os.platform() === "win32") {
+    console.log("Diskspace Windows");
+    checkDiskSpace("C:/").then((diskSpace) => {
+      space.space = Math.floor(
+        ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 10) /
+          Math.floor(diskSpace.size / 1024 / 1024 / 1024)) *
+          100
+      );
+      res.send(space);
+    });
+  } else {
+    console.log("Diskspace Linux");
+    checkDiskSpace("/").then((diskSpace) => {
+      space.space = Math.floor(
+        ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 10) /
+          Math.floor(diskSpace.size / 1024 / 1024 / 1024)) *
+          100
+      );
+      res.send(space);
+    });
+  }
+});
 
 const job = schedule.scheduleJob(timer, function () {
   capturecounter++;
@@ -59,13 +97,13 @@ const job = schedule.scheduleJob(timer, function () {
     settime();
   }
   axios
-    .get("http://192.168.1.254/?custom=1&cmd=1001")
+    .get("http://" + mapirIP + "/?custom=1&cmd=1001")
     .then((result) => {
       parseString(result.data, function (err, result1) {
         var pic_name = result1.Function.File[0].NAME[0];
-        var pic_path = "http://192.168.1.254/DCIM/PHOTO/" + pic_name;
+        var pic_path = "http://" + mapirIP + "/DCIM/PHOTO/" + pic_name;
         var postjson = {
-          filename: pic_name
+          filename: pic_name,
         };
         Jimp.read(pic_path)
           .then((img) => {
@@ -73,7 +111,7 @@ const job = schedule.scheduleJob(timer, function () {
           })
           .then((value) => {
             axios
-              .post("http://0.0.0.0:8088/ndvi", postjson)
+              .post("http://localhost:8088/ndvi", postjson)
               .then(function (response) {})
               .catch(function (error) {});
           })
@@ -83,22 +121,64 @@ const job = schedule.scheduleJob(timer, function () {
     .catch((error) => {});
 });
 
+router.post("/settimer", function (req, res) {
+  var data = req.body;
+  if (data.time.substring(0, 1) == 0) {
+    hour = data.time.substring(1, 2);
+    savedata.hour = data.time.substring(1, 2);
+  } else {
+    hour = data.time.substring(0, 2);
+    savedata.hour = data.time.substring(0, 2);
+  }
+  if (data.time.substring(3, 4) == 0) {
+    min = data.time.substring(4, 5);
+    savedata.min = data.time.substring(4, 5);
+  } else {
+    min = data.time.substring(3, 5);
+    savedata.min = data.time.substring(3, 5);
+  }
+  res.send();
+
+  var timedata = JSON.stringify(savedata);
+  fs.writeFileSync("./settings.json", timedata);
+});
+
+router.get("/gettimer", function (req, res) {
+  var tempHour = hour.toString();
+  var tempMin = min.toString();
+  if (hour < 10) {
+    tempHour = "0" + tempHour;
+  }
+  if (min < 10) {
+    tempMin = "0" + tempMin;
+  }
+  var timeJSON = {
+    hour: tempHour,
+    min: tempMin,
+  };
+  res.send(JSON.stringify(timeJSON));
+});
+
 router.get("/capture", function (req, res) {
   capturecounter++;
 
-  if (capturecounter > 100) {
+  savedata.capturecounter = capturecounter;
+  var capturedata = JSON.stringify(savedata);
+  fs.writeFileSync("./settings.json", capturedata);  
+
+  if (capturecounter > 1000) {
     format();
     settime();
   }
 
   axios
-    .get("http://192.168.1.254/?custom=1&cmd=1001")
+    .get("http://" + mapirIP + "/?custom=1&cmd=1001")
     .then((result) => {
       parseString(result.data, function (err, result1) {
         var pic_name = result1.Function.File[0].NAME[0];
-        var pic_path = "http://192.168.1.254/DCIM/PHOTO/" + pic_name;
+        var pic_path = "http://" + mapirIP + "/DCIM/PHOTO/" + pic_name;
         var postjson = {
-          filename: pic_name
+          filename: pic_name,
         };
 
         // console.log("Start Jimp");
@@ -110,7 +190,7 @@ router.get("/capture", function (req, res) {
             // console.log("Image written");
             // console.log("Axios POST");
             axios
-              .post("http://0.0.0.0:8088/ndvi", postjson)
+              .post("http://localhost:8088/ndvi", postjson)
               .then(function (response) {
                 // console.log("Axios POST done");
                 res.send(result.data);

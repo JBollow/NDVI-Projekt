@@ -33,10 +33,6 @@
     <link rel="stylesheet" href="css/custom.css">
 
 
-
-
-
-
     <meta charset="utf-8">
     <title>Mapi Survey NDVI WebApp</title>
 </head>
@@ -55,8 +51,10 @@
                     class="glyphicon glyphicon-th"></span>Archiv</button>
             <button id="ftp_button" class="buttonwhite" type="button" onclick="ftp()"><span
                     class="glyphicon glyphicon-folder-open"></span>FTP</button>
-            <button id="settings_button" class="buttonwhite" type="button" onclick="settings()"><span
+            <button id="settings_button" class="buttonwhite" type="button" onclick="getTimer()"><span
                     class="glyphicon glyphicon-cog"></span>Settings</button>
+            <button id="diskspace" class="buttonwhite" title="diskspace" type="button" onclick="diskspace()"><span
+                    class="glyphicon glyphicon-hdd"></span><p id="diskspacetext">80%</p></button>
         </div>
     </div>
     <div class="processing">
@@ -78,11 +76,10 @@
             <tr>
                 <td>
                     <form>
-
                         <lable class="formlable" for="inputpath">Auto capture time:</lable>
-                        <input class="timein" type="time" name="path" id="inputpath" placeholder="C:\Orthophoto.tif">
+                        <input class="timein" type="time" name="path" id="inputpath">
                         <div class="intime">
-                            <input class="sub" type="submit" value="&#10003;"></div>
+                            <input class="sub" type="submit" value="&#10003;" onclick="setTimer()"></div>
                     </form>
                 </td>
             </tr>

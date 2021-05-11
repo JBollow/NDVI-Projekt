@@ -38,17 +38,6 @@ h3 {
   color: #404040;
 }
 
-p {
-  font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode",
-    "Lucida Sans", Tahoma, sans-serif;
-  font-size: 12px;
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 500;
-  line-height: 15.4px;
-  color: #404040;
-}
-
 .container-fluid {
   z-index: 50;
 }
@@ -97,7 +86,7 @@ p {
   cursor: pointer;
   border: 1px solid black;
   border-radius: 4px;
-  width: 100px !important;
+  width: 100px;
 }
 
 .buttonwhite:hover {
@@ -130,7 +119,7 @@ p {
   border: 1px solid black;
   border-radius: 4px;
   text-decoration: line-through;
-  width: 100px !important;
+  width: 100px;
 }
 
 .buttonwhitedis:hover {
@@ -319,10 +308,6 @@ div.settings {
   }
 }
 
-#settings_button {
-  float: right;
-}
-
 .glyphicon{
   display: inline;
   margin-right: 6px;
@@ -340,8 +325,9 @@ div.settings {
   cursor: pointer;
   border: 1px solid black;
   border-radius: 4px;
+padding-left: 5px;
   height: 26px;
-  width: 70px !important;
+  width: 77px !important;
 }
 
 .timein:hover {
@@ -402,5 +388,18 @@ div.settings {
 .intime {
   position: relative;
   top: 1px;
+  display: inline;
+}
+
+#diskspace{
+  float: right;
+  width: 70px !important;
+}
+
+#settings_button {
+  float: right !important;
+}
+
+#diskspacetext{
   display: inline;
 }
