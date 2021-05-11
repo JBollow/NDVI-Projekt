@@ -68,7 +68,6 @@ if (capturecounter > 1000) {
 router.get("/diskspace", function (req, res) {
   space = { space: "0" };
   if (os.platform() === "win32") {
-    console.log("Diskspace Windows");
     checkDiskSpace("C:/").then((diskSpace) => {
       space.space = Math.floor(
         ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 10) /
@@ -78,22 +77,12 @@ router.get("/diskspace", function (req, res) {
       res.send(space);
     });
   } else {
-    console.log("Diskspace Linux");
     checkDiskSpace("/").then((diskSpace) => {
       space.space = Math.floor(
         ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 10) /
           Math.floor(diskSpace.size / 1024 / 1024 / 1024)) *
           100
-      );
-      console.log(diskSpace.free);
-      console.log(diskSpace.size);
-      console.log(
-        Math.floor(
-          ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 10) /
-            Math.floor(diskSpace.size / 1024 / 1024 / 1024)) *
-            100
-        )
-      );
+      );      
       res.send(space);
     });
   }
