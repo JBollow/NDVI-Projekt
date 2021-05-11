@@ -100,6 +100,9 @@ def ndvi():
     cirname = req['filename']
     filename = cirname + ".png"
     cir_file_path = os.path.abspath(os.path.join(localPath, cirPath, filename))
+    Path(localPath).mkdir(parents=True, exist_ok=True)
+    Path(os.path.join(localPath, previews)).mkdir(parents=True, exist_ok=True)
+    Path(os.path.join(localPath, thumbs)).mkdir(parents=True, exist_ok=True)
 
     time.sleep(3)
 
@@ -121,10 +124,8 @@ def ndvi():
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviPath, "ndvi.jpg"))
     # print("image written")
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviArchiv, cirname))
-    # Path(os.path.join(localPath, previews)).mkdir(parents=True, exist_ok=True)
-    # Path(os.path.join(localPath, thumbs)).mkdir(parents=True, exist_ok=True)
-    # rgb.thumbnail_image(500).write_to_file(os.path.join(localPath, previews, cirname))
-    # rgb.thumbnail_image(100).write_to_file(os.path.join(localPath, thumbs, cirname))
+    rgb.thumbnail_image(500).write_to_file(os.path.join(localPath, previews, cirname))
+    rgb.thumbnail_image(100).write_to_file(os.path.join(localPath, thumbs, cirname))
 
     dir = os.path.join(localPath, cirPath)
     for f in os.listdir(dir):
