@@ -6,6 +6,7 @@ import os
 import time
 import pyvips
 from colormaps import RdYlGn_lut
+from pathlib import Path
 
 localPath = os.path.abspath(os.path.dirname(__file__))
 ndviPath = localPath + "/app_client/NDVI_Temp/"
@@ -120,6 +121,8 @@ def ndvi():
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviPath, "ndvi.jpg"))
     # print("image written")
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviArchiv, cirname))
+    Path(os.path.join(localPath, previews)).mkdir(parents=True, exist_ok=True)
+    Path(os.path.join(localPath, thumbs)).mkdir(parents=True, exist_ok=True)
     rgb.thumbnail_image(500).write_to_file(os.path.join(localPath, previews, cirname))
     rgb.thumbnail_image(100).write_to_file(os.path.join(localPath, thumbs, cirname))
 

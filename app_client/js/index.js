@@ -161,11 +161,6 @@ router.get("/gettimer", function (req, res) {
 
 router.get("/capture", function (req, res) {
   capturecounter++;
-
-  savedata.capturecounter = capturecounter;
-  var capturedata = JSON.stringify(savedata);
-  fs.writeFileSync("./settings.json", capturedata);  
-
   if (capturecounter > 1000) {
     format();
     settime();
@@ -194,6 +189,9 @@ router.get("/capture", function (req, res) {
               .then(function (response) {
                 // console.log("Axios POST done");
                 res.send(result.data);
+                savedata.capturecounter = capturecounter;
+                var capturedata = JSON.stringify(savedata);
+                fs.writeFileSync("./settings.json", capturedata);  
               })
               .catch(function (error) {
                 // console.log("Axios POST error");
