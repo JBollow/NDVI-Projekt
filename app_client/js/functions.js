@@ -1,3 +1,5 @@
+const checkDiskSpace = require('check-disk-space')
+
 function capture() {
   swal({
     // position: "bottom-end",
@@ -60,7 +62,7 @@ function archiv() {
 }
 
 function ftp() {
-  window.location.href = "/archiv";
+  window.location.href = "ftp://192.168.4.1";
 }
 
 function latest() {
@@ -71,4 +73,25 @@ function settings() {
   if ($(".settings").css("visibility") == "hidden")
     $(".settings").css("visibility", "visible");
   else $(".settings").css("visibility", "hidden");
+}
+
+function reportDiskSpace() {
+  var platform = window.navigator.platform,
+    windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
+
+  if (windowsPlatforms.indexOf(platform) !== -1) {
+    checkDiskSpace('C:/').then((diskSpace) => {})
+    return diskSpace;
+    os = 'Windows';
+  } else if (/Linux/.test(platform)) {
+    checkDiskSpace('/').then((diskSpace) => {})
+    return diskSpace;
+    os = 'Linux';
+  }
+  return null;
+}
+
+
+function setTimer(){
+  
 }

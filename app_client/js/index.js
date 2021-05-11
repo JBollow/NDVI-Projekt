@@ -8,9 +8,12 @@ const router = express.Router();
 
 router.use(cors());
 router.use(express.json());
-router.use(express.urlencoded({ extended: false }));
+router.use(express.urlencoded({
+  extended: false
+}));
 
 var capturecounter = 0;
+var timer = "0 16 * * *";
 
 function settime() {
   let d = new Date();
@@ -49,7 +52,7 @@ function format() {
 format();
 settime();
 
-const job = schedule.scheduleJob("* * 16 * * *", function () {
+const job = schedule.scheduleJob(timer, function () {
   capturecounter++;
   if (capturecounter > 100) {
     format();
@@ -61,7 +64,9 @@ const job = schedule.scheduleJob("* * 16 * * *", function () {
       parseString(result.data, function (err, result1) {
         var pic_name = result1.Function.File[0].NAME[0];
         var pic_path = "http://192.168.1.254/DCIM/PHOTO/" + pic_name;
-        var postjson = { filename: pic_name };
+        var postjson = {
+          filename: pic_name
+        };
         Jimp.read(pic_path)
           .then((img) => {
             return img.write("./app_client/CIR_Temp/" + pic_name + ".png");
@@ -92,7 +97,9 @@ router.get("/capture", function (req, res) {
       parseString(result.data, function (err, result1) {
         var pic_name = result1.Function.File[0].NAME[0];
         var pic_path = "http://192.168.1.254/DCIM/PHOTO/" + pic_name;
-        var postjson = { filename: pic_name };
+        var postjson = {
+          filename: pic_name
+        };
 
         // console.log("Start Jimp");
         Jimp.read(pic_path)

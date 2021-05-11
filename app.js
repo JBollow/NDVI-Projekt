@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const index = require("./app_client/js/index");
-// const ftp = require("./app_client/js/ftp");
 const favicon = require("serve-favicon");
 const Gallery = require("express-photo-gallery");
 
@@ -34,7 +33,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "app_client")));
 
-// app.use("/ftp", ftp);
 app.use("/", index);
 app.use("/archiv", Gallery("./app_client/NDVI_Archiv", optionsArchiv));
 app.use("/latest", Gallery("./app_client/NDVI_Temp", optionsNDVI));
