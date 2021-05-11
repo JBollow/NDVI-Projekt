@@ -85,11 +85,15 @@ router.get("/diskspace", function (req, res) {
           Math.floor(diskSpace.size / 1024 / 1024 / 1024)) *
           100
       );
-      console.log(Math.floor(
-        ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 10) /
-          Math.floor(diskSpace.size / 1024 / 1024 / 1024)) *
-          100
-      ));
+      console.log(diskSpace.free);
+      console.log(diskSpace.size);
+      console.log(
+        Math.floor(
+          ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 10) /
+            Math.floor(diskSpace.size / 1024 / 1024 / 1024)) *
+            100
+        )
+      );
       res.send(space);
     });
   }
@@ -196,7 +200,7 @@ router.get("/capture", function (req, res) {
                 res.send(result.data);
                 savedata.capturecounter = capturecounter;
                 var capturedata = JSON.stringify(savedata);
-                fs.writeFileSync("./settings.json", capturedata);  
+                fs.writeFileSync("./settings.json", capturedata);
               })
               .catch(function (error) {
                 // console.log("Axios POST error");
