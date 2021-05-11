@@ -61,7 +61,7 @@ function archiv() {
 }
 
 function ftp() {
-  window.location.href = "ftp://localhost:23";
+  window.location.href = "ftp://localhost";
 }
 
 function latest() {
