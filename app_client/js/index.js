@@ -70,7 +70,7 @@ router.get("/diskspace", function (req, res) {
   if (os.platform() === "win32") {
     checkDiskSpace("C:/").then((diskSpace) => {
       space.space = Math.floor(
-        ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 10) /
+        ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 5) /
           Math.floor(diskSpace.size / 1024 / 1024 / 1024)) *
           100
       );
@@ -79,7 +79,7 @@ router.get("/diskspace", function (req, res) {
   } else {
     checkDiskSpace("/").then((diskSpace) => {
       space.space = Math.floor(
-        ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 10) /
+        ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 5) /
           Math.floor(diskSpace.size / 1024 / 1024 / 1024)) *
           100
       );      
