@@ -77,7 +77,7 @@ router.get("/diskspace", function (req, res) {
       res.send(space);
     });
   } else {
-    checkDiskSpace("/").then((diskSpace) => {
+    checkDiskSpace("/home/pi/").then((diskSpace) => {
       space.space = Math.floor(
         ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 5) /
           Math.floor(diskSpace.size / 1024 / 1024 / 1024)) *
