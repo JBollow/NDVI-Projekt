@@ -33,8 +33,7 @@ function capture() {
       $(".processing").css("visibility", "hidden");
       $("#ndvi_button").prop("disabled", false);
       $("#ndvi_button").removeClass("buttonwhitedis").addClass("buttonwhite");
-      reload();
-      diskspace();
+      reload();      
     },
     error: function () {
       swal({
