@@ -80,7 +80,7 @@ def bandsplit(image, band_order):
 
 
 def ndvi_calc(image, band_order):
-    nir, g, r, alpha = bandsplit(image, band_order)
+    r, g, nir, alpha = bandsplit(image, band_order)
     index = (nir - r) / (nir + r)
     return [alpha, index]
 
