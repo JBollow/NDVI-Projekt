@@ -60,10 +60,22 @@ function format() {
     .catch(function (error) {});
 }
 
+function setMode() {
+  var format = "http://" + mapirIP + "/?custom=1&cmd=3001&par=0";
+  axios
+    .get(format)
+    .then(function (response) {})
+    .catch(function (error) {});
+}
+
+
 if (capturecounter > 1000) {
   format();
   settime();
 }
+
+settime();
+setMode();
 
 router.get("/diskspace", function (req, res) {
   space = { space: "0" };

@@ -106,7 +106,7 @@ def ndvi():
     image = pyvips.Image.new_from_file(cir_file_path)
 
     image = image.resize(1/2)
-    image = image.gaussblur(2)
+    image = image.gaussblur(1)
 
     alpha, result = ndvi_calc(image, 'RGN')
     histogram = result_histogram(result)
