@@ -14,7 +14,6 @@ ndviArchiv = localPath + "/app_client/NDVI_Archiv/"
 cirPath = localPath + "/app_client/CIR_Temp/"
 thumbs = ndviArchiv + "thumbs/"
 previews = ndviArchiv + "previews/"
-kernel = numpy.ones((5, 5), numpy.float32)/25
 
 numpy.set_printoptions(threshold=numpy.inf)
 
@@ -87,13 +86,11 @@ def ndvi_calc(image, band_order):
 
 @route('/')
 def meta(x='NA'):
-    # print("/ Nix")
     return '<b>This is a simple python server, set up using the Bottle framework.</b>'
 
 
 @post('/ndvi')
 def ndvi():
-    # print("NDVI")
     req = request.json
     response.headers['Content-Type'] = 'application/json'
     response.headers['Cache-Control'] = 'no-cache'
@@ -120,9 +117,7 @@ def ndvi():
     rdylgn_image = pyvips.Image.new_from_array(RdYlGn_lut).bandfold()
     rgb = result.maplut(rdylgn_image)        
 
-    # print("image processed")
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviPath, "ndvi.jpg"))
-    # print("image written")
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviArchiv, cirname))
     rgb.thumbnail_image(500).write_to_file(os.path.join(localPath, previews, cirname))
     rgb.thumbnail_image(100).write_to_file(os.path.join(localPath, thumbs, cirname))
@@ -130,6 +125,7 @@ def ndvi():
     dir = os.path.join(localPath, cirPath)
     for f in os.listdir(dir):
         os.remove(os.path.join(dir, f))
+        
     return json.dumps(success)
 
 run(host='0.0.0.0', reloader=True, port=8088)

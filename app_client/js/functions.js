@@ -33,7 +33,7 @@ function capture() {
       $(".processing").css("visibility", "hidden");
       $("#ndvi_button").prop("disabled", false);
       $("#ndvi_button").removeClass("buttonwhitedis").addClass("buttonwhite");
-      location.reload();     
+      reload();
     },
     error: function () {
       swal({
@@ -47,7 +47,12 @@ function capture() {
       $("#ndvi_button").removeClass("buttonwhitedis").addClass("buttonwhite");
     },
     timeout: 0,
-  });  
+  });
+}
+
+function reload() {
+  var url = $("#image").attr("src");
+  $("#image").attr("src", url + `?v=${Math.random()}`);
 }
 
 function archiv() {
@@ -55,7 +60,7 @@ function archiv() {
 }
 
 function ftp() {
-  window.location.href = "ftp://192.168.0.36";
+  window.location.href = "ftp://192.168.0.36";  
 }
 
 function latest() {
@@ -76,8 +81,8 @@ function setTimer() {
   $.ajax({
     url: "/settimer",
     type: "POST",
-    dataType: 'json',
-    contentType: 'application/json',
+    dataType: "json",
+    contentType: "application/json",
     data: JSON.stringify(time),
     traditional: true,
     cache: false,
@@ -109,12 +114,14 @@ function getTimer() {
     dataType: "JSON",
     data: null,
     success: function (res) {
-      $("#inputpath").val( res.hour+":"+res.min+":00" );
+      $("#inputpath").val(res.hour + ":" + res.min + ":00");
     },
-    error: function () { console.log("error")},
+    error: function () {
+      console.log("error");
+    },
     timeout: 0,
   });
-  
+
   settings();
 }
 

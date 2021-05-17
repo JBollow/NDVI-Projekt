@@ -16,23 +16,16 @@
     <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
     <link rel="manifest" href="img/manifest.json">
-
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="img/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-
     <script src="js/sweetalert2.all.js"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/functions.js"></script>
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="css/font-awesome.css" />
     <link rel="stylesheet" href="css/sweetalert.css">
     <link rel="stylesheet" href="css/custom.css">
-
-
     <meta charset="utf-8">
     <title>Mapi Survey NDVI WebApp</title>
 </head>
@@ -49,10 +42,10 @@
                     class="glyphicon glyphicon-picture"></span>Latest</button>
             <button id="archiv_button" class="buttonwhite" type="button" onclick="archiv()"><span
                     class="glyphicon glyphicon-th"></span>Archiv</button>
-            <button id="ftp_button" class="buttonwhite" type="button" onclick="ftp()"><span
-                    class="glyphicon glyphicon-folder-open"></span>FTP</button>
             <button id="settings_button" class="buttonwhite" type="button" onclick="getTimer()"><span
                     class="glyphicon glyphicon-cog"></span>Settings</button>
+            <button id="ftp_button" class="buttonwhite" type="button" onclick="ftp()"><span
+                    class="glyphicon glyphicon-folder-open"></span>FTP</button>
             <button id="diskspace" class="buttonwhite" title="diskspace" type="button" onclick="diskspace()"><span
                     class="glyphicon glyphicon-hdd"></span>
                 <p id="diskspacetext">XX%</p>
@@ -60,7 +53,6 @@
         </div>
     </div>
     <div class="processing">
-
         <div class="lds-roller">
             <div></div>
             <div></div>
@@ -71,7 +63,6 @@
             <div></div>
             <div></div>
         </div>
-
     </div>
     <div class="settings">
         <table>
@@ -91,4 +82,5 @@
 <script>
     diskspace()
 </script>
+
 </html>

@@ -196,8 +196,7 @@ div.processing {
   top: 45%;
   left: 45%;
   z-index: 800;
-  width: 86px;
-  height: 86px;
+  height: 85px;
   padding: 2px;
   background-color: rgba(255, 255, 255, 1);
   border: 1px solid black;
@@ -394,6 +393,10 @@ padding-left: 5px;
 #diskspace{
   float: right;
   width: 80px !important;
+}
+
+#ftp_button {
+  float: right !important;
 }
 
 #settings_button {

@@ -82,7 +82,7 @@ router.get("/diskspace", function (req, res) {
         ((Math.floor(diskSpace.free / 1024 / 1024 / 1024) - 5) /
           Math.floor(diskSpace.size / 1024 / 1024 / 1024)) *
           100
-      );      
+      );
       res.send(space);
     });
   }
@@ -158,12 +158,6 @@ router.get("/gettimer", function (req, res) {
 });
 
 router.get("/capture", function (req, res) {
-  capturecounter++;
-  if (capturecounter > 1000) {
-    format();
-    settime();
-  }
-
   axios
     .get("http://" + mapirIP + "/?custom=1&cmd=1001")
     .then((result) => {
@@ -174,25 +168,25 @@ router.get("/capture", function (req, res) {
           filename: pic_name,
         };
 
-        // console.log("Start Jimp");
         Jimp.read(pic_path)
           .then((img) => {
             return img.write("./app_client/CIR_Temp/" + pic_name + ".png");
           })
           .then((value) => {
-            // console.log("Image written");
-            // console.log("Axios POST");
             axios
               .post("http://localhost:8088/ndvi", postjson)
               .then(function (response) {
-                // console.log("Axios POST done");
                 res.send(result.data);
+                capturecounter++;
+                if (capturecounter > 1000) {
+                  format();
+                  settime();
+                }
                 savedata.capturecounter = capturecounter;
                 var capturedata = JSON.stringify(savedata);
                 fs.writeFileSync("./settings.json", capturedata);
               })
               .catch(function (error) {
-                // console.log("Axios POST error");
                 res.send(result.data);
               });
           })
@@ -203,7 +197,6 @@ router.get("/capture", function (req, res) {
       });
     })
     .catch((error) => {
-      // console.log("Axios GET error");
       res.send(error.data);
     });
 });
