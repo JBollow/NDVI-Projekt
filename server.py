@@ -125,6 +125,8 @@ def ndvi():
     dir = os.path.join(localPath, cirPath)
     for f in os.listdir(dir):
         os.remove(os.path.join(dir, f))
+    
+    time.sleep(3)
         
     return json.dumps(success)
 

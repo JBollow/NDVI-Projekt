@@ -30,8 +30,8 @@ function capture() {
         customClass: "swalCc",
         buttonsStyling: false,
       });
-      $(".processing").css("visibility", "hidden");
-      $("#ndvi_button").prop("disabled", false);
+      $(".processing").css("visibility", "hidden");      
+      $("#ndvi_button").prop("disabled", false);      
       $("#ndvi_button").removeClass("buttonwhitedis").addClass("buttonwhite");
       reload();
     },
