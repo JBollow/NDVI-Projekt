@@ -33,7 +33,7 @@ function capture() {
       $(".processing").css("visibility", "hidden");      
       $("#ndvi_button").prop("disabled", false);      
       $("#ndvi_button").removeClass("buttonwhitedis").addClass("buttonwhite");
-      reload();
+      location.reload();
     },
     error: function () {
       swal({
@@ -48,11 +48,6 @@ function capture() {
     },
     timeout: 0,
   });
-}
-
-function reload() {
-  var url = $("#image").attr("src");
-  $("#image").attr("src", url + `?v=${new Date().getTime()}`);
 }
 
 function archiv() {
