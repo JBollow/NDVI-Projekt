@@ -52,7 +52,7 @@ function capture() {
 
 function reload() {
   var url = $("#image").attr("src");
-  $("#image").attr("src", url + `?v=${Math.random()}`);
+  $("#image").attr("src", url + `?v=${new Date().getTime()}`);
 }
 
 function archiv() {
