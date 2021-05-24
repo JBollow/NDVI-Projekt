@@ -1,3 +1,6 @@
 node_modules
 Sonstiges
 **/*.jpg
+app_client/index.html
+__pycache__/colormaps.cpython-37.pyc
+settings.json

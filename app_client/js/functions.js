@@ -33,7 +33,7 @@ function capture() {
       $(".processing").css("visibility", "hidden");      
       $("#ndvi_button").prop("disabled", false);      
       $("#ndvi_button").removeClass("buttonwhitedis").addClass("buttonwhite");
-      location.reload();
+      reloadIMG();
     },
     error: function () {
       swal({
@@ -52,6 +52,11 @@ function capture() {
 
 function archiv() {
   window.location.href = "/archiv";
+}
+
+function reloadIMG() {
+  d = new Date();
+  $("#image").attr("src", "NDVI_Temp/ndvi.jpg?"+d.getTime());
 }
 
 function ftp() {
