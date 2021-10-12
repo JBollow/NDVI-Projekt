@@ -29,11 +29,12 @@ function capture() {
         type: "success",
         customClass: "swalCc",
         buttonsStyling: false,
-      });
+      }).then(function() {
+        location.reload();
+    });
       $(".processing").css("visibility", "hidden");      
       $("#ndvi_button").prop("disabled", false);      
       $("#ndvi_button").removeClass("buttonwhitedis").addClass("buttonwhite");
-      reloadIMG();
     },
     error: function () {
       swal({
@@ -52,11 +53,6 @@ function capture() {
 
 function archiv() {
   window.location.href = "/archiv";
-}
-
-function reloadIMG() {
-  d = new Date();
-  $("#image").attr("src", "NDVI_Temp/ndvi.jpg?"+d.getTime());
 }
 
 function ftp() {
