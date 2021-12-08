@@ -81,7 +81,6 @@ function setTimer() {
     contentType: "application/json",
     data: JSON.stringify(time),
     traditional: true,
-    cache: false,
     processData: false,
     success: function () {
       swal({

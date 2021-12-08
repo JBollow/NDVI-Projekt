@@ -132,6 +132,7 @@ const job = schedule.scheduleJob(timer, function () {
 });
 
 router.post("/settimer", function (req, res) {
+  res.send();
   var data = req.body;
   if (data.time.substring(0, 1) == 0) {
     hour = data.time.substring(1, 2);
@@ -147,8 +148,6 @@ router.post("/settimer", function (req, res) {
     min = data.time.substring(3, 5);
     savedata.min = data.time.substring(3, 5);
   }
-  res.send();
-
   var timedata = JSON.stringify(savedata);
   fs.writeFileSync("./settings.json", timedata);
 });
