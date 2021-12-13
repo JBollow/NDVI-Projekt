@@ -131,8 +131,7 @@ const job = schedule.scheduleJob(timer, function () {
     .catch((error) => {});
 });
 
-router.post("/settimer", function (req, res) {
-  res.send();
+router.post("/settimer", function (req, res) {  
   var data = req.body;
   if (data.time.substring(0, 1) == 0) {
     hour = data.time.substring(1, 2);
@@ -150,6 +149,8 @@ router.post("/settimer", function (req, res) {
   }
   var timedata = JSON.stringify(savedata);
   fs.writeFileSync("./settings.json", timedata);
+
+  res.send(JSON.stringify(timedata));
 });
 
 router.get("/gettimer", function (req, res) {
