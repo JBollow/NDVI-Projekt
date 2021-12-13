@@ -92,8 +92,8 @@ function setTimer() {
     },
     error: function () {
       swal({
-        text: "Error",
-        type: "error",
+        text: "Timer changed",
+        type: "success",
         customClass: "swalCc",
         buttonsStyling: false,
       });
