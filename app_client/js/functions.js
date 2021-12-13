@@ -98,7 +98,7 @@ function setTimer() {
         buttonsStyling: false,
       });
     },
-    timeout: 0,
+    timeout: 1500,
   });
 }
 
