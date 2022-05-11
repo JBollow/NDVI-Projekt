@@ -10,10 +10,11 @@ from pathlib import Path
 
 localPath = os.path.abspath(os.path.dirname(__file__))
 ndviPath = localPath + "/app_client/NDVI_Temp/"
-ndviArchiv = localPath + "/app_client/NDVI_Archiv/"
+ndviArchive = localPath + "/app_client/NDVI_Archive/"
 cirPath = localPath + "/app_client/CIR_Temp/"
-thumbs = ndviArchiv + "thumbs/"
-previews = ndviArchiv + "previews/"
+rawArchive = localPath + "/app_client/RAW_Archive/"
+thumbs = ndviArchive + "thumbs/"
+previews = ndviArchive + "previews/"
 
 numpy.set_printoptions(threshold=numpy.inf)
 
@@ -118,16 +119,17 @@ def ndvi():
     rgb = result.maplut(rdylgn_image)        
 
     rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviPath, "ndvi.jpg"))
-    rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviArchiv, cirname))
+    rgb.bandjoin(alpha).write_to_file(os.path.join(localPath, ndviArchive, cirname))
+    result.write_to_file(os.path.join(localPath, rawArchive, cirname))
     rgb.thumbnail_image(500).write_to_file(os.path.join(localPath, previews, cirname))
     rgb.thumbnail_image(100).write_to_file(os.path.join(localPath, thumbs, cirname))
 
     dir = os.path.join(localPath, cirPath)
     for f in os.listdir(dir):
-        os.remove(os.path.join(dir, f))
+        os.remove(os.path.join(dir, f))        
     
     time.sleep(6)
         
-    return json.dumps(success)
+    return json.dumps(success)    
 
 run(host='0.0.0.0', reloader=True, port=8088)

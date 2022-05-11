@@ -51,8 +51,8 @@ function capture() {
   });
 }
 
-function archiv() {
-  window.location.href = "/archiv";
+function archive() {
+  window.location.href = "/archive";
 }
 
 function ftp() {

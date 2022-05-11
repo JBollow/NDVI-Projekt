@@ -7,8 +7,8 @@ const Gallery = require("express-photo-gallery");
 
 const app = express();
 
-var optionsArchiv = {
-  title: "NDVI Archiv",
+var optionsArchive = {
+  title: "NDVI Archive",
 };
 
 var optionsNDVI = {
@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "app_client")));
 
 app.use("/", index);
-app.use("/archiv", Gallery("./app_client/NDVI_Archiv", optionsArchiv));
+app.use("/archive", Gallery("./app_client/NDVI_Archive", optionsArchive));
 app.use("/latest", Gallery("./app_client/NDVI_Temp", optionsNDVI));
 
 app.use(function (req, res, next) {
